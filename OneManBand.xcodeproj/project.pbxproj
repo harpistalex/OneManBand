@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		2F94245424A0F7F900FFD000 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94245224A0F7F900FFD000 /* Main.storyboard */; };
 		2F94245624A0F7FD00FFD000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F94245524A0F7FD00FFD000 /* Assets.xcassets */; };
 		2F94245924A0F7FD00FFD000 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F94245724A0F7FD00FFD000 /* LaunchScreen.storyboard */; };
+		76A6DADF77E4AEE58DB4D866 /* Pods_OneManBand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714DE02A80886C3C356AA4F2 /* Pods_OneManBand.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		2F94245524A0F7FD00FFD000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F94245824A0F7FD00FFD000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F94245A24A0F7FD00FFD000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		714DE02A80886C3C356AA4F2 /* Pods_OneManBand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneManBand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6BF125DAA49BDC4E447192A /* Pods-OneManBand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneManBand.release.xcconfig"; path = "Target Support Files/Pods-OneManBand/Pods-OneManBand.release.xcconfig"; sourceTree = "<group>"; };
+		EE7B3C231B205BD423603D72 /* Pods-OneManBand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneManBand.debug.xcconfig"; path = "Target Support Files/Pods-OneManBand/Pods-OneManBand.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76A6DADF77E4AEE58DB4D866 /* Pods_OneManBand.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F8039A595F8CA7700F90761 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				714DE02A80886C3C356AA4F2 /* Pods_OneManBand.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2F94244024A0F7F900FFD000 = {
 			isa = PBXGroup;
 			children = (
 				2F94244B24A0F7F900FFD000 /* OneManBand */,
 				2F94244A24A0F7F900FFD000 /* Products */,
+				A156AFE1BEA269F28A6BFF39 /* Pods */,
+				2F8039A595F8CA7700F90761 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +71,48 @@
 		2F94244B24A0F7F900FFD000 /* OneManBand */ = {
 			isa = PBXGroup;
 			children = (
-				2F94244C24A0F7F900FFD000 /* AppDelegate.swift */,
-				2F94244E24A0F7F900FFD000 /* SceneDelegate.swift */,
-				2F94245024A0F7F900FFD000 /* ViewController.swift */,
-				2F94245224A0F7F900FFD000 /* Main.storyboard */,
+				2F94246124A0FAB800FFD000 /* Model */,
+				2F94246024A0FA9F00FFD000 /* View */,
+				2F94246224A0FAC200FFD000 /* Controller */,
 				2F94245524A0F7FD00FFD000 /* Assets.xcassets */,
 				2F94245724A0F7FD00FFD000 /* LaunchScreen.storyboard */,
 				2F94245A24A0F7FD00FFD000 /* Info.plist */,
 			);
 			path = OneManBand;
+			sourceTree = "<group>";
+		};
+		2F94246024A0FA9F00FFD000 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F94245224A0F7F900FFD000 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F94246124A0FAB800FFD000 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F94246224A0FAC200FFD000 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F94244C24A0F7F900FFD000 /* AppDelegate.swift */,
+				2F94244E24A0F7F900FFD000 /* SceneDelegate.swift */,
+				2F94245024A0F7F900FFD000 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A156AFE1BEA269F28A6BFF39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE7B3C231B205BD423603D72 /* Pods-OneManBand.debug.xcconfig */,
+				D6BF125DAA49BDC4E447192A /* Pods-OneManBand.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +122,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F94245D24A0F7FD00FFD000 /* Build configuration list for PBXNativeTarget "OneManBand" */;
 			buildPhases = (
+				E3A4127336AED7762C133EA7 /* [CP] Check Pods Manifest.lock */,
 				2F94244524A0F7F900FFD000 /* Sources */,
 				2F94244624A0F7F900FFD000 /* Frameworks */,
 				2F94244724A0F7F900FFD000 /* Resources */,
+				BEA45B8320EA0401A183ED8E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +182,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BEA45B8320EA0401A183ED8E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneManBand/Pods-OneManBand-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneManBand/Pods-OneManBand-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OneManBand/Pods-OneManBand-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3A4127336AED7762C133EA7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneManBand-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2F94244524A0F7F900FFD000 /* Sources */ = {
@@ -282,6 +374,7 @@
 		};
 		2F94245E24A0F7FD00FFD000 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE7B3C231B205BD423603D72 /* Pods-OneManBand.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +393,7 @@
 		};
 		2F94245F24A0F7FD00FFD000 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6BF125DAA49BDC4E447192A /* Pods-OneManBand.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
