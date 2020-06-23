@@ -13,10 +13,9 @@ class DateCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var bookingIcon: UIImageView!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        bookingIcon.isHidden = true
+        // bookingIcon.isHidden = true
     }
 
 }

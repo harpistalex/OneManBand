@@ -16,8 +16,8 @@ class Networking {
     //SINGLETON. The object creates itself and can't be initialised outside of here because the init is private. To access, call Networking.shared.
     static var shared = Networking()
     
-    var ombURL: String = "https://omb-backend-cloudrun-txzqmjv3mq-ew.a.run.app"
-    var headers: HTTPHeaders = [
+    private var ombURL: String = "https://omb-backend-cloudrun-txzqmjv3mq-ew.a.run.app"
+    private var headers: HTTPHeaders = [
         "Authorization": ""
     ]
     

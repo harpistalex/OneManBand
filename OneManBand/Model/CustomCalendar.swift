@@ -11,7 +11,7 @@ import UIKit
 class CustomCalendar {
     
     var dateCustomCalendar = Date()
-    let calendar = Calendar.current
+    private let calendar = Calendar.current
 
     func currentMonthStart() -> Date {
         
