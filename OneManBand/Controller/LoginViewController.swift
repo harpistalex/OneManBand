@@ -12,7 +12,6 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     
@@ -23,9 +22,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        activityIndicator.isHidden = true
-        //activityIndicator.hidesWhenStopped = true
         
         
     }

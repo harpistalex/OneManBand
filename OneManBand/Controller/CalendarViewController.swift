@@ -13,7 +13,7 @@ class CalendarViewController: UIViewController {
     
     @IBOutlet weak var calendarView: UICollectionView!
     @IBOutlet weak var monthYearLabel: UILabel!
-
+    @IBOutlet weak var eventDetailsTableView: UITableView!
     
     let customCalendar = CustomCalendar()
     var dateArray = Array<Date>()
@@ -23,7 +23,7 @@ class CalendarViewController: UIViewController {
     let dateFormatter = DateFormatter()
     let jsonDateFormatter = DateFormatter()
     
-    var bookings: Array<JSON> = []
+    var bookings: Array<Booking> = []
     var bookingBooleans: Array<Bool> = []
     var bookingsInOneDay: Array<Booking> = []
     var bookingPointers: Array<Int> = []
@@ -125,8 +125,7 @@ class CalendarViewController: UIViewController {
                 
                     switch ApiResponse.success {
                     case true: let result : JSON = ApiResponse.data!
-                    print(result.arrayValue)
-                        self.bookings = result["bookings"].arrayValue
+                        self.bookings = Booking.parseJsonBooking(json: result["bookings"])
                         self.addBookingsToCalendar(bookings: self.bookings)
                         self.calendarView.reloadData()
                     
@@ -140,7 +139,7 @@ class CalendarViewController: UIViewController {
                   
         }
         
-        func addBookingsToCalendar(bookings: Array<JSON>) {
+        func addBookingsToCalendar(bookings: Array<Booking>) {
             
             if bookings.isEmpty {
                 print("No bookings this month")
@@ -148,19 +147,17 @@ class CalendarViewController: UIViewController {
 
                 for x in 0..<bookings.count  {
                     
-                    let bookingDateString = "\(bookings[x]["gig"]["startTime"])"
-                    print(bookingDateString)
+                    print(bookings[x].gig)
                     
-                    if let dateOfBooking = jsonDateFormatter.date(from: bookingDateString) {
-                        print("dateOfBooking: \(String(describing: dateOfBooking))")
-                        
-                        for i in 0..<dateArray.count {
-                            if compareDates(dateOfBooking: dateOfBooking, dateInCalendar: dateArray[i]) {
-                                print("Date in calendar: \(dateArray[i])")
-                                bookingBooleans[i] = true
-                            }
+                    let dateOfGig = bookings[x].gig.startTime
+                    print("dateOfGig: \(dateOfGig)")
+                    
+                    for i in 0..<dateArray.count {
+                        if compareDates(dateOfBooking: dateOfGig, dateInCalendar: dateArray[i]) {
+                            print("Date in calendar: \(dateArray[i])")
+                            bookingBooleans[i] = true
                         }
-                    
+                        
                     }
                     
                 }
@@ -192,6 +189,8 @@ class CalendarViewController: UIViewController {
 
 }
 
+//MARK: - CalendarView
+
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -207,13 +206,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         
         let dayNumber = dateArray[indexPath.item].getDay()
         cell.dateLabel.text = "\(dayNumber)"
-        
-//        //Set weekends to grey:
-//        switch dateArray[indexPath.item].getWeekDayNum() {
-//        case 7: cell.backgroundColor = UIColor.ombDarkGrey
-//        case 1: cell.backgroundColor = UIColor.ombDarkGrey
-//        default: cell.backgroundColor = UIColor.clear
-//        }
         
         //Set current day to ombPink:
         if cell.dateLabel.text == "\(dateToday.getDay())" && dateShown.getMonth() == dateToday.getMonth() && dateShown.getYear() == dateToday.getYear() {
@@ -232,6 +224,36 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        bookingPointers = []
+        eventDetailsTableView.reloadData()
+        
+        print("indexPath.item: \(indexPath.item)")
+        let dateSelected = dateArray[indexPath.item]
+        
+        for i in 0..<bookings.count {
+//            let bookingDateString = "\(bookings[i].gig.startTime)"
+//            print(bookingDateString)
+//
+//            if let dateOfBooking = jsonDateFormatter.date(from: bookingDateString) {
+//                print("dateOfBooking: \(String(describing: dateOfBooking))")
+            
+            let dateOfBooking = bookings[i].gig.startTime
+                
+                if compareDates(dateOfBooking: dateOfBooking, dateInCalendar: dateSelected) {
+                    print("Selected booking: \(bookings[i].gig.service)")
+                    bookingPointers.append(i)
+                    eventDetailsTableView.reloadData()
+                    
+                }
+            
+            }
+            
+    }
+        
+
 
     //Set the size and spacing for the cells:
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -256,5 +278,42 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
 
+    
+}
+
+//MARK: - TableView
+
+extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bookingPointers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bookingCell", for: indexPath)
+            
+        if bookings.count != 0 {
+            print("Label: \(bookings[bookingPointers[indexPath.row]].gig.service)")
+            //print("Label bookingsJson: \(bookingsJson.count)")
+            //print("Label bookingPointers: \(bookingPointers[indexPath.row])")
+            cell.textLabel?.text = "Label: \(bookings[bookingPointers[indexPath.row]].gig.service)"
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //TODO:- Deselct row when returned back from next screen.
+        
+        let pointer = bookingPointers[indexPath.row]
+        selectedBooking = bookings[pointer]
+        //performSegue(withIdentifier: "goToEventDetails", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true) //TODO: Is this the correct place for this or should it be above segue?
+        
+    }
+    
+    
+    
     
 }

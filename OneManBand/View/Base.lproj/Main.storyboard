@@ -47,23 +47,17 @@
                                     <constraint firstItem="Wrq-7M-bT7" firstAttribute="leading" secondItem="nuh-nO-UnK" secondAttribute="leading" id="aQn-7v-SRX"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="szE-XK-bzH">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="nuh-nO-UnK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="144" id="111-pF-snV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nuh-nO-UnK" secondAttribute="trailing" constant="20" id="8Vs-qt-mFj"/>
-                            <constraint firstItem="szE-XK-bzH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BdO-mz-5v0"/>
                             <constraint firstItem="nuh-nO-UnK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ygr-44-cRr"/>
-                            <constraint firstItem="szE-XK-bzH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iCq-u5-irN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Aoc-W4-Dus"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="szE-XK-bzH" id="oJL-cS-vzY"/>
                         <outlet property="emailTextField" destination="Wrq-7M-bT7" id="8U0-YY-8Aw"/>
                         <outlet property="passwordTextField" destination="wv8-C6-fCl" id="Xah-Ql-g8C"/>
                         <segue destination="41y-Zw-Wqa" kind="show" identifier="goToCalendar" id="kAO-Pd-YKZ"/>
@@ -193,6 +187,24 @@
                                     <outlet property="delegate" destination="41y-Zw-Wqa" id="aGC-05-oTa"/>
                                 </connections>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vdd-89-JPb">
+                                <rect key="frame" x="20" y="568" width="374" height="284"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bookingCell" id="EIj-kQ-Wuy">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EIj-kQ-Wuy" id="sli-gE-DTJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="41y-Zw-Wqa" id="0I5-ax-N0n"/>
+                                    <outlet property="delegate" destination="41y-Zw-Wqa" id="f4g-pM-HBO"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -202,7 +214,11 @@
                             <constraint firstItem="Veh-nD-uTD" firstAttribute="top" secondItem="YRt-Le-XPr" secondAttribute="top" constant="50" id="Ay1-Ul-hAr"/>
                             <constraint firstItem="YRt-Le-XPr" firstAttribute="trailing" secondItem="57H-uL-qI2" secondAttribute="trailing" constant="20" id="Cxi-cZ-WWC"/>
                             <constraint firstItem="UHc-fV-yim" firstAttribute="top" secondItem="nK2-3w-aOO" secondAttribute="bottom" constant="50" id="HXT-Gn-MgP"/>
+                            <constraint firstItem="YRt-Le-XPr" firstAttribute="trailing" secondItem="vdd-89-JPb" secondAttribute="trailing" constant="20" id="Hxc-25-WX2"/>
+                            <constraint firstItem="YRt-Le-XPr" firstAttribute="bottom" secondItem="vdd-89-JPb" secondAttribute="bottom" constant="10" id="JAf-T5-z1E"/>
+                            <constraint firstItem="vdd-89-JPb" firstAttribute="leading" secondItem="YRt-Le-XPr" secondAttribute="leading" constant="20" id="Q7d-TA-zbn"/>
                             <constraint firstItem="Gkd-fT-dFK" firstAttribute="top" secondItem="YRt-Le-XPr" secondAttribute="top" constant="50" id="Qqm-Mf-YqR"/>
+                            <constraint firstItem="vdd-89-JPb" firstAttribute="top" secondItem="57H-uL-qI2" secondAttribute="bottom" constant="10" id="Rve-4e-dxB"/>
                             <constraint firstItem="nK2-3w-aOO" firstAttribute="top" secondItem="YRt-Le-XPr" secondAttribute="top" constant="50" id="UHQ-ql-goE"/>
                             <constraint firstItem="57H-uL-qI2" firstAttribute="leading" secondItem="YRt-Le-XPr" secondAttribute="leading" constant="20" id="Wsg-Uj-qUB"/>
                             <constraint firstItem="57H-uL-qI2" firstAttribute="top" secondItem="UHc-fV-yim" secondAttribute="bottom" constant="20" id="dT6-aF-Thz"/>
@@ -218,6 +234,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="57H-uL-qI2" id="bgR-ne-vyY"/>
+                        <outlet property="eventDetailsTableView" destination="vdd-89-JPb" id="9B8-zz-t8H"/>
                         <outlet property="monthYearLabel" destination="Gkd-fT-dFK" id="3g7-dZ-63S"/>
                     </connections>
                 </viewController>

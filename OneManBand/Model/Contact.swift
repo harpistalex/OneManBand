@@ -7,11 +7,18 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Contact: Encodable {
     
     var _id: String
     var firstName: String
     var surname: String
+    
+//    static func parseJsonContact(json: JSON) -> Contact {
+//        
+//        
+//        
+//    }
     
 }

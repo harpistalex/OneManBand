@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Address: Encodable {
     
@@ -17,5 +18,14 @@ struct Address: Encodable {
     var line3: String
     var postcode: String
     var line4: String
+    
+//    static func parseJsonAddress(json: JSON) -> Address {
+//    
+//        let address = Address.self
+//        
+//        
+//        
+//        
+//    }
     
 }
