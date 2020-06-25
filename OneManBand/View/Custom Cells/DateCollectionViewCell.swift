@@ -12,10 +12,16 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var bookingIcon: UIImageView!
+    @IBOutlet weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // bookingIcon.isHidden = true
+        
+        containerView.layer.borderWidth = 1
+        containerView.layer.borderColor = UIColor.white.cgColor
+        
     }
 
 }
+
+

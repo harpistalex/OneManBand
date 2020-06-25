@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    
+    
     //TEST
     let testEmail = "simon@traxsound.co.uk"
     let testPassword = "abcd"
@@ -22,7 +24,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicator.hidesWhenStopped = true
+        activityIndicator.isHidden = true
+        //activityIndicator.hidesWhenStopped = true
+        
         
     }
 
@@ -41,20 +45,20 @@ class LoginViewController: UIViewController {
                 return
             }
         */
-            
         
-            activityIndicator.startAnimating()
-            
+        let loadingOverlay = LoadingOverlay(frame: view.bounds)
+        view.addSubview(loadingOverlay)
+        
             Networking.shared.login(email: testEmail, password: testPassword) { (ApiResponse) in
-                        
+
                 switch ApiResponse.success {
-                case true: self.performSegue(withIdentifier: "goToCalendar", sender: self)
-                default: print("Failed to log in") //TOAST?
+                case true: self.performSegue(withIdentifier: K.loginSegue, sender: self)
+                default: print("Failed to log in"); loadingOverlay.removeFromSuperview() //TOAST?
                 }
-                self.activityIndicator.stopAnimating()
+                loadingOverlay.removeFromSuperview() //TODO: this might not be necessary.
+
             }
-            
-            
+    
     }
     
     

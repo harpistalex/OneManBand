@@ -13,6 +13,7 @@ class CalendarViewController: UIViewController {
     
     @IBOutlet weak var calendarView: UICollectionView!
     @IBOutlet weak var monthYearLabel: UILabel!
+
     
     let customCalendar = CustomCalendar()
     var dateArray = Array<Date>()
@@ -31,7 +32,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calendarView.register(UINib(nibName: "DateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "dateCell")
+        calendarView.register(UINib(nibName: K.dateCollectionViewCellName, bundle: nil), forCellWithReuseIdentifier: K.dateCollectionViewCellID)
 
         jsonDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 
@@ -114,20 +115,27 @@ class CalendarViewController: UIViewController {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let startDate = dateFormatter.string(from: firstMonday)
             let endDate = dateFormatter.string(from: lastSunday)
-            
-            //activityIndicator.startAnimating()
+
+            //start spinner
+            //TODO: only start spinner if call takes a certain amount of time?
+            let loadingOverlay = LoadingOverlay(frame: view.bounds)
+            view.addSubview(loadingOverlay)
             
             Networking.shared.getBookingDates(currentMonth: currentMonth, firstMonday: firstMonday, lastSunday: lastSunday, startDate: startDate, endDate: endDate) { (ApiResponse) in
+                
                     switch ApiResponse.success {
                     case true: let result : JSON = ApiResponse.data!
                     print(result.arrayValue)
                         self.bookings = result["bookings"].arrayValue
                         self.addBookingsToCalendar(bookings: self.bookings)
                         self.calendarView.reloadData()
+                    
                         
                     default: print("Failed to log in")
                     }
-                    //self.activityIndicator.stopAnimating()
+                //stop spinner
+                loadingOverlay.removeFromSuperview()
+                
                 }
                   
         }
@@ -191,35 +199,30 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! DateCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.dateCollectionViewCellID, for: indexPath) as! DateCollectionViewCell
         
-        
-        print("Frame: \(cell.bounds)")
-        print("Frame 2: \(cell.contentView.bounds)")
-        
-        //cell.contentView.frame.width = cell.frame.width
-        //cell.contentView.frame.height = cell.frame.height
+        cell.dateLabel.textColor = UIColor.ombDarkPurple
    
         cell.bookingIcon.isHidden = true
         
         let dayNumber = dateArray[indexPath.item].getDay()
         cell.dateLabel.text = "\(dayNumber)"
         
-        //Set weekends to grey:
+//        //Set weekends to grey:
 //        switch dateArray[indexPath.item].getWeekDayNum() {
-//        case 7: cell.backgroundColor = UIColor.lightGray
-//        case 1: cell.backgroundColor = UIColor.lightGray
+//        case 7: cell.backgroundColor = UIColor.ombDarkGrey
+//        case 1: cell.backgroundColor = UIColor.ombDarkGrey
 //        default: cell.backgroundColor = UIColor.clear
 //        }
         
-        //Set current day to magenta:
+        //Set current day to ombPink:
         if cell.dateLabel.text == "\(dateToday.getDay())" && dateShown.getMonth() == dateToday.getMonth() && dateShown.getYear() == dateToday.getYear() {
-            cell.dateLabel.textColor = UIColor.magenta
+            cell.dateLabel.textColor = UIColor.ombPink
         }
         
         //Colour previous and next month's dates:
         if dateArray[indexPath.item].getMonthNum() != dateShown.getMonthNum() {
-            cell.dateLabel.textColor = UIColor.gray
+            cell.dateLabel.textColor = UIColor.ombDarkGrey
         }
         
         if bookingBooleans[indexPath.item] {
@@ -230,14 +233,28 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         
     }
 
-    //Set the size for the cells:
+    //Set the size and spacing for the cells:
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let collectionWidth = collectionView.bounds.width - 2
-        let collectionHeight = collectionView.bounds.height - 2
-
+        let collectionWidth = collectionView.bounds.width - 3
+        let collectionHeight = collectionView.bounds.height - 3
+        
         return CGSize(width: collectionWidth / 7, height: collectionHeight / 6)
     
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+
     
 }
