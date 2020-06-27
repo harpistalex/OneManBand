@@ -46,11 +46,22 @@ class CalendarViewController: UIViewController {
     
     
         //MARK: - Custom Calendar functions:
+    
+    
+    @IBAction func logoutPressed(_ sender: Any) {
+        if Networking.shared.logout() {
+            navigationController?.popToRootViewController(animated: true)
+        } else {
+            print("couldn't log out")
+        }
+        
+        
+    }
         
         @IBAction func previousMonthPressed(_ sender: Any) {
             
             bookingPointers = []
-            //eventDetailsTableView.reloadData()
+            eventDetailsTableView.reloadData()
             
             var comps = DateComponents()
             comps.month = -1
@@ -72,7 +83,7 @@ class CalendarViewController: UIViewController {
         @IBAction func nextMonthPressed(_ sender: Any) {
             
             bookingPointers = []
-            //eventDetailsTableView.reloadData()
+            eventDetailsTableView.reloadData()
             
             var comps = DateComponents()
             comps.month = 1
@@ -282,6 +293,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 //MARK: - TableView
+
+//TODO: Clear tableView when back or next is pressed.
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
