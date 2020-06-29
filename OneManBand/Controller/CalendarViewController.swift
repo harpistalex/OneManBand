@@ -245,11 +245,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let dateSelected = dateArray[indexPath.item]
         
         for i in 0..<bookings.count {
-//            let bookingDateString = "\(bookings[i].gig.startTime)"
-//            print(bookingDateString)
-//
-//            if let dateOfBooking = jsonDateFormatter.date(from: bookingDateString) {
-//                print("dateOfBooking: \(String(describing: dateOfBooking))")
             
             let dateOfBooking = bookings[i].gig.startTime
                 

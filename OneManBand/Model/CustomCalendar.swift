@@ -83,6 +83,18 @@ class CustomCalendar {
         
         listOfDatesToShow.append(lastSunday)
         
+        //Make sure there are always 6 columns in the calendarCollectionView:
+        if listOfDatesToShow.count < 42 {
+            
+            var date2 = Calendar.current.date(byAdding: .day, value: 1, to: lastSunday)!
+            
+            for _ in 0...6 {
+                listOfDatesToShow.append(date2)
+                date2 = Calendar.current.date(byAdding: .day, value: 1, to: date2)! //Unwrap...
+            }
+            
+        }
+        
         return listOfDatesToShow
         
     }
