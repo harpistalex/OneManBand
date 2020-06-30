@@ -193,10 +193,28 @@ class CalendarViewController: UIViewController {
         
         // MARK: - Navigation
 
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            //let destinationVC = segue.destination as! EventDetailsViewController
-            //destinationVC.event = selectedBooking
+//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            //let destinationVC = segue.destination as! EventDetailsViewController
+//            //destinationVC.event = selectedBooking
+//        }
+    
+    //MARK: - Presented TableView:
+    
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if let controller = segue.destination as? EventDetailsPresentation {
+        
+        //Insert all variables for TableView
+        controller.bookingPointers = bookingPointers
+        controller.bookings = bookings
+        
+        slideInTransitioningDelegate.direction = .bottom
+        controller.transitioningDelegate = slideInTransitioningDelegate
+        controller.modalPresentationStyle = .custom
+
         }
+    }
 
 }
 
@@ -251,7 +269,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
                 if compareDates(dateOfBooking: dateOfBooking, dateInCalendar: dateSelected) {
                     print("Selected booking: \(bookings[i].gig.service)")
                     bookingPointers.append(i)
-                    eventDetailsTableView.reloadData()
+                    //eventDetailsTableView.reloadData()
+                    performSegue(withIdentifier: K.eventDetailsPresentationSegue, sender: self)
                     
                 }
             

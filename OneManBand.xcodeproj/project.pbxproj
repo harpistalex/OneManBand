@@ -20,6 +20,9 @@
 		2F94246624A1011200FFD000 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94246524A1011200FFD000 /* DateExtensions.swift */; };
 		2F94246824A1015A00FFD000 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94246724A1015A00FFD000 /* CustomCalendar.swift */; };
 		2F94246B24A1021F00FFD000 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94246A24A1021F00FFD000 /* Networking.swift */; };
+		2F9678A924AA3CA100BC1100 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9678A824AA3CA100BC1100 /* SlideInPresentationManager.swift */; };
+		2F9678AB24AA3FBB00BC1100 /* EventDetailsPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9678AA24AA3FBB00BC1100 /* EventDetailsPresentation.swift */; };
+		2F9678AD24AA4AFD00BC1100 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9678AC24AA4AFD00BC1100 /* SlideInPresentationController.swift */; };
 		2FD9366124A1077300BBA347 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9365F24A1077300BBA347 /* DateCollectionViewCell.swift */; };
 		2FD9366224A1077300BBA347 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */; };
 		2FD9366424A24CFC00BBA347 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9366324A24CFC00BBA347 /* Booking.swift */; };
@@ -47,6 +50,9 @@
 		2F94246524A1011200FFD000 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		2F94246724A1015A00FFD000 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
 		2F94246A24A1021F00FFD000 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		2F9678A824AA3CA100BC1100 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
+		2F9678AA24AA3FBB00BC1100 /* EventDetailsPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsPresentation.swift; sourceTree = "<group>"; };
+		2F9678AC24AA4AFD00BC1100 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		2FD9365F24A1077300BBA347 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
 		2FD9366324A24CFC00BBA347 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 		2F94246024A0FA9F00FFD000 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F9678A724AA3C6900BC1100 /* Presentation */,
 				2F94245224A0F7F900FFD000 /* Main.storyboard */,
 				2FD9366D24A377DB00BBA347 /* CustomColours.swift */,
 				2F5EACF424A39CC900C32599 /* LoadingOverlay.swift */,
@@ -154,6 +161,7 @@
 				2F94244E24A0F7F900FFD000 /* SceneDelegate.swift */,
 				2F94245024A0F7F900FFD000 /* LoginViewController.swift */,
 				2F94246324A1005B00FFD000 /* CalendarViewController.swift */,
+				2F9678AA24AA3FBB00BC1100 /* EventDetailsPresentation.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +173,15 @@
 				2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */,
 			);
 			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		2F9678A724AA3C6900BC1100 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				2F9678A824AA3CA100BC1100 /* SlideInPresentationManager.swift */,
+				2F9678AC24AA4AFD00BC1100 /* SlideInPresentationController.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		A156AFE1BEA269F28A6BFF39 /* Pods */ = {
@@ -303,12 +320,15 @@
 				2F94246824A1015A00FFD000 /* CustomCalendar.swift in Sources */,
 				2FD9366624A24D0900BBA347 /* Gig.swift in Sources */,
 				2F5EACF524A39CC900C32599 /* LoadingOverlay.swift in Sources */,
+				2F9678AB24AA3FBB00BC1100 /* EventDetailsPresentation.swift in Sources */,
 				2F94245124A0F7F900FFD000 /* LoginViewController.swift in Sources */,
 				2FD9366124A1077300BBA347 /* DateCollectionViewCell.swift in Sources */,
+				2F9678A924AA3CA100BC1100 /* SlideInPresentationManager.swift in Sources */,
 				2F94244D24A0F7F900FFD000 /* AppDelegate.swift in Sources */,
 				2F94244F24A0F7F900FFD000 /* SceneDelegate.swift in Sources */,
 				2FD9366824A24DBF00BBA347 /* Address.swift in Sources */,
 				2F94246B24A1021F00FFD000 /* Networking.swift in Sources */,
+				2F9678AD24AA4AFD00BC1100 /* SlideInPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

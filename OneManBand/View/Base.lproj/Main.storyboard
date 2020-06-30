@@ -383,11 +383,40 @@
                         <outlet property="calendarView" destination="57H-uL-qI2" id="bgR-ne-vyY"/>
                         <outlet property="eventDetailsTableView" destination="vdd-89-JPb" id="9B8-zz-t8H"/>
                         <outlet property="monthYearLabel" destination="Gkd-fT-dFK" id="3g7-dZ-63S"/>
+                        <segue destination="03a-QY-um5" kind="presentation" identifier="goToEventDetailsPresentation" id="Ghz-A6-9lz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFk-jJ-fKQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1773.75" y="138.38028169014083"/>
+        </scene>
+        <!--Event Details Presentation-->
+        <scene sceneID="H4C-L8-lk8">
+            <objects>
+                <tableViewController id="03a-QY-um5" customClass="EventDetailsPresentation" customModule="OneManBand" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="d92-Un-gCB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventDetailsPopupCell" id="Bf3-hH-HrG">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bf3-hH-HrG" id="IdJ-Lh-jsK">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="03a-QY-um5" id="YPX-kr-yEY"/>
+                            <outlet property="delegate" destination="03a-QY-um5" id="gxB-ac-whJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZsJ-RI-frJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2514" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jvj-DF-ohZ">
