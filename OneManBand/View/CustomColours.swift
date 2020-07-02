@@ -16,5 +16,6 @@ extension UIColor {
     static let ombPink = UIColor(red: 255/255, green: 59/255, blue: 98/255, alpha: 1)
     static let ombOverlay = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 0.8)
     static let ombLightPurple = UIColor(red: 110/255, green: 101/255, blue: 116/255, alpha: 1)
+    static let ombGreen = UIColor(red: 1/255, green: 199/255, blue: 18/255, alpha: 1)
     
 }

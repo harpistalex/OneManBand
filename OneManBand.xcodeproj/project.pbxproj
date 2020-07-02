@@ -20,6 +20,8 @@
 		2F94246624A1011200FFD000 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94246524A1011200FFD000 /* DateExtensions.swift */; };
 		2F94246824A1015A00FFD000 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94246724A1015A00FFD000 /* CustomCalendar.swift */; };
 		2F94246B24A1021F00FFD000 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94246A24A1021F00FFD000 /* Networking.swift */; };
+		2F9678AF24ACC47E00BC1100 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9678AE24ACC47E00BC1100 /* EventDetailsViewController.swift */; };
+		2F9678B324AE114E00BC1100 /* FullBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9678B224AE114E00BC1100 /* FullBooking.swift */; };
 		2FD9366124A1077300BBA347 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9365F24A1077300BBA347 /* DateCollectionViewCell.swift */; };
 		2FD9366224A1077300BBA347 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */; };
 		2FD9366424A24CFC00BBA347 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9366324A24CFC00BBA347 /* Booking.swift */; };
@@ -47,6 +49,8 @@
 		2F94246524A1011200FFD000 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		2F94246724A1015A00FFD000 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
 		2F94246A24A1021F00FFD000 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		2F9678AE24ACC47E00BC1100 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		2F9678B224AE114E00BC1100 /* FullBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullBooking.swift; sourceTree = "<group>"; };
 		2FD9365F24A1077300BBA347 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
 		2FD9366324A24CFC00BBA347 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				2FD9366924A24FE700BBA347 /* Venue.swift */,
 				2FD9366B24A250AE00BBA347 /* Contact.swift */,
 				2FD9366724A24DBF00BBA347 /* Address.swift */,
+				2F9678B224AE114E00BC1100 /* FullBooking.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				2F94244E24A0F7F900FFD000 /* SceneDelegate.swift */,
 				2F94245024A0F7F900FFD000 /* LoginViewController.swift */,
 				2F94246324A1005B00FFD000 /* CalendarViewController.swift */,
+				2F9678AE24ACC47E00BC1100 /* EventDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -307,8 +313,10 @@
 				2FD9366124A1077300BBA347 /* DateCollectionViewCell.swift in Sources */,
 				2F94244D24A0F7F900FFD000 /* AppDelegate.swift in Sources */,
 				2F94244F24A0F7F900FFD000 /* SceneDelegate.swift in Sources */,
+				2F9678B324AE114E00BC1100 /* FullBooking.swift in Sources */,
 				2FD9366824A24DBF00BBA347 /* Address.swift in Sources */,
 				2F94246B24A1021F00FFD000 /* Networking.swift in Sources */,
+				2F9678AF24ACC47E00BC1100 /* EventDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

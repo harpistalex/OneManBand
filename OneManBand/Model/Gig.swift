@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-
 struct Gig: Encodable {
     
     var venue: JSON
@@ -19,7 +18,7 @@ struct Gig: Encodable {
     var endTime: Date
     var paid: Bool
     var _id: String
-    var price: Int
+    var price: Float
     
     //TODO: Check with Simon why gigs in booking is not array.
         
@@ -54,8 +53,6 @@ struct Gig: Encodable {
     
         static func parseJsonGig(json: JSON) -> Gig {
     
-            print("GIG AGAIN: \(json)")
-    
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 
@@ -67,7 +64,7 @@ struct Gig: Encodable {
                 let endTime: Date = dateFormatter.date(from: json["endTime"].stringValue)!
                 let paid: Bool = json["paid"].boolValue
                 let _id: String = json["_id"].stringValue
-                let price: Int = json["price"].intValue
+                let price: Float = json["price"].floatValue
     
                 return Gig(venue: venue, service: service, arrivalTime: arrivalTime, startTime: startTime, endTime: endTime, paid: paid, _id: _id, price: price)
 

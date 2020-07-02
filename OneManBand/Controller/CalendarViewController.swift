@@ -47,7 +47,6 @@ class CalendarViewController: UIViewController {
     
         //MARK: - Custom Calendar functions:
     
-    
     @IBAction func logoutPressed(_ sender: Any) {
         if Networking.shared.logout() {
             navigationController?.popToRootViewController(animated: true)
@@ -58,6 +57,7 @@ class CalendarViewController: UIViewController {
         
     }
         
+    
         @IBAction func previousMonthPressed(_ sender: Any) {
             
             bookingPointers = []
@@ -80,6 +80,7 @@ class CalendarViewController: UIViewController {
             
         }
         
+    
         @IBAction func nextMonthPressed(_ sender: Any) {
             
             bookingPointers = []
@@ -194,8 +195,13 @@ class CalendarViewController: UIViewController {
         // MARK: - Navigation
 
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            //let destinationVC = segue.destination as! EventDetailsViewController
-            //destinationVC.event = selectedBooking
+            let destinationVC = segue.destination as! EventDetailsViewController
+            if let bookingID = selectedBooking?.id {
+                destinationVC.bookingID = bookingID
+            }
+            if let gigID = selectedBooking?.gig._id {
+                destinationVC.gigID = gigID
+            }
         }
 
 }
@@ -283,8 +289,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return 0.0
     }
     
-
-    
 }
 
 //MARK: - TableView
@@ -298,7 +302,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookingCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.eventDetailsTableViewCellID, for: indexPath)
             
         if bookings.count != 0 {
             print("Label: \(bookings[bookingPointers[indexPath.row]].gig.service)")
@@ -312,11 +316,11 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //TODO:- Deselct row when returned back from next screen.
+        //TODO:- Deselect row when returned back from next screen.
         
         let pointer = bookingPointers[indexPath.row]
         selectedBooking = bookings[pointer]
-        //performSegue(withIdentifier: "goToEventDetails", sender: self)
+        performSegue(withIdentifier: K.eventDetailsSegue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true) //TODO: Is this the correct place for this or should it be above segue?
         
     }

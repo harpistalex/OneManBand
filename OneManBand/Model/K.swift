@@ -15,5 +15,6 @@ struct K {
     static let dateCollectionViewCellID = "dateCell"
     static let dateCollectionViewCellName = "DateCollectionViewCell"
     static let eventDetailsTableViewCellID = "bookingCell"
+    static let eventDetailsSegue = "goToEventDetails"
     
 }
