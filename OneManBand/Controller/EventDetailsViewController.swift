@@ -73,10 +73,12 @@ class EventDetailsViewController: UIViewController {
                 confirmedButton.backgroundColor = .ombGreen
                 confirmedButton.setTitleColor(.white, for: .normal)
                 confirmedButton.setTitle("CONFIRMED", for: .normal)
+                //confirmedButton.sizeToFit()
             } else {
                 confirmedButton.backgroundColor = .ombDarkGrey
                 confirmedButton.setTitleColor(.ombLightPurple, for: .normal)
                 confirmedButton.setTitle("NOT CONFIRMED", for: .normal)
+                //confirmedButton.sizeToFit()
             }
             
             //price
@@ -86,15 +88,18 @@ class EventDetailsViewController: UIViewController {
             
             priceButton.setTitle("\(formatted)", for: .normal)
             
+            
             //paid
             if booking!.totalPricePaid == true {
                 paidButton.backgroundColor = .ombGreen
                 paidButton.setTitleColor(.white, for: .normal)
                 paidButton.setTitle("PAID", for: .normal)
+                
             } else {
                 paidButton.backgroundColor = .ombDarkGrey
                 paidButton.setTitleColor(.ombLightPurple, for: .normal)
                 paidButton.setTitle("NOT PAID", for: .normal)
+                
             }
             
             //Gig stuff
@@ -113,9 +118,11 @@ class EventDetailsViewController: UIViewController {
             //venue
             venueButton.setTitle("\(gigVenue["name"].stringValue)", for: .normal)
             
+            
             //hirer
             let hirerName: String = "\(booking!.hirer["firstName"]) \(booking!.hirer["surname"])"
             hirerButton.setTitle("\(hirerName)", for: .normal)
+            
             
             dateFormatter.dateFormat = "dd-MMM-yyyy  H:mm"
             //start
