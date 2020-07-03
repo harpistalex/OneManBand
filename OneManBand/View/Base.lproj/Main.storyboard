@@ -407,26 +407,26 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odc-Z2-3Qr">
                                                 <rect key="frame" x="0.0" y="0.0" width="41.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.12941176469999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iH-WL-A2f">
                                                 <rect key="frame" x="49.5" y="0.0" width="67" height="23"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.12941176469999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="left" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ezI-ZJ-n3J">
-                                        <rect key="frame" x="0.0" y="47" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="47" width="256" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-9v-xmI" customClass="CustomButton" customModule="OneManBand" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="30"/>
                                                 <color key="backgroundColor" red="0.0039215686274509803" green="0.78039215689999997" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
                                                 <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                                                <state key="normal" title="NOT CONFIRMED">
+                                                <state key="normal" title="CONFIRMED">
                                                     <color key="titleColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -448,7 +448,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-Q2-bve" customClass="CustomButton" customModule="OneManBand" customModuleProvider="target">
-                                                <rect key="frame" x="96" y="0.0" width="12" height="30"/>
+                                                <rect key="frame" x="72" y="0.0" width="12" height="30"/>
                                                 <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
                                                 <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
@@ -474,7 +474,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdc-7k-Av7" customClass="CustomButton" customModule="OneManBand" customModuleProvider="target">
-                                                <rect key="frame" x="113" y="0.0" width="54" height="30"/>
+                                                <rect key="frame" x="89" y="0.0" width="54" height="30"/>
                                                 <color key="backgroundColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
                                                 <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
@@ -500,7 +500,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <view contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="b5v-sS-CL8">
-                                                <rect key="frame" x="172" y="0.0" width="108" height="30"/>
+                                                <rect key="frame" x="148" y="0.0" width="108" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgd-4A-wVa">
                                                         <rect key="frame" x="1" y="0.5" width="30" height="29"/>
@@ -566,13 +566,18 @@
                                         <color key="textColor" red="0.18039215689999999" green="0.12941176469999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNW-OF-4kV">
-                                        <rect key="frame" x="0.0" y="317" width="40.5" height="167"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" editable="NO" text="Notes:" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJK-0B-eHl">
+                                        <rect key="frame" x="0.0" y="317" width="280" height="167"/>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.12941176469999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WJK-0B-eHl" secondAttribute="trailing" id="Eo4-a0-XVt"/>
+                                    <constraint firstItem="WJK-0B-eHl" firstAttribute="leading" secondItem="dJa-zF-xFJ" secondAttribute="leading" id="mfB-vD-kQ5"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
@@ -591,7 +596,7 @@
                         <outlet property="confirmedButton" destination="H5R-9v-xmI" id="bcY-Oh-Vj3"/>
                         <outlet property="endLabel" destination="gE2-ac-9vI" id="y6i-yB-JlH"/>
                         <outlet property="hirerButton" destination="5Di-Of-qSg" id="Ppr-fZ-076"/>
-                        <outlet property="notesLabel" destination="LNW-OF-4kV" id="4kk-r8-vfL"/>
+                        <outlet property="notesLabel" destination="WJK-0B-eHl" id="l8z-ii-jvI"/>
                         <outlet property="paidButton" destination="zdc-7k-Av7" id="Gfc-mb-Qp7"/>
                         <outlet property="priceButton" destination="kl9-Q2-bve" id="0zR-ot-0p6"/>
                         <outlet property="serviceIcon" destination="Odc-Z2-3Qr" id="haA-F6-HtB"/>

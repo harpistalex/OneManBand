@@ -20,7 +20,7 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var hirerButton: UIButton!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
-    @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var notesLabel: UITextView!
     
     var bookingID = String()
     var gigID = String()
@@ -73,12 +73,10 @@ class EventDetailsViewController: UIViewController {
                 confirmedButton.backgroundColor = .ombGreen
                 confirmedButton.setTitleColor(.white, for: .normal)
                 confirmedButton.setTitle("CONFIRMED", for: .normal)
-                //confirmedButton.sizeToFit()
             } else {
                 confirmedButton.backgroundColor = .ombDarkGrey
                 confirmedButton.setTitleColor(.ombLightPurple, for: .normal)
                 confirmedButton.setTitle("NOT CONFIRMED", for: .normal)
-                //confirmedButton.sizeToFit()
             }
             
             //price
@@ -126,13 +124,14 @@ class EventDetailsViewController: UIViewController {
             
             dateFormatter.dateFormat = "dd-MMM-yyyy  H:mm"
             //start
-            startLabel.text = dateFormatter.string(from: gigStart)
+            startLabel.text = "Start: \(dateFormatter.string(from: gigStart))"
             
             //end
-            endLabel.text = dateFormatter.string(from: gigEnd)
+            endLabel.text = "End: \(dateFormatter.string(from: gigEnd))"
 
             //notes
-            notesLabel.text = "Notes: \(booking!.notes)"
+            notesLabel.text = "Notes:\n\(booking!.notes)"
+            notesLabel.textContainer.lineFragmentPadding = .zero
         }
         
     }
