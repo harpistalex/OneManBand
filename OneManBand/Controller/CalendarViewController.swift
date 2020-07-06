@@ -117,6 +117,8 @@ class CalendarViewController: UIViewController {
             print("dateArray count and bookingsBooleans count: \(dateArray.count) \(bookingBooleans.count)")
             
         }
+    
+    //MARK: - Get Data
         
         func getBookingDates() {
             

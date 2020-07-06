@@ -25,12 +25,14 @@ class EventDetailsViewController: UIViewController {
     var bookingID = String()
     var gigID = String()
     var booking: FullBooking?
+    var gig: Gig?
     let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getBookingData()
+        
 
     }
     
@@ -58,8 +60,6 @@ class EventDetailsViewController: UIViewController {
     func updateUI() {
         
         if booking != nil {
-            //service
-            serviceLabel.text = booking!.service
             
             //bookingType
             if booking!.bookingType == "lesson" {
@@ -79,14 +79,6 @@ class EventDetailsViewController: UIViewController {
                 confirmedButton.setTitle("NOT CONFIRMED", for: .normal)
             }
             
-            //price
-            let price = booking!.totalPrice
-            let currencySymbol = getSymbol(forCurrencyCode: booking!.currency)
-            let formatted = String(format: "\(currencySymbol ?? "")%.2f", price)
-            
-            priceButton.setTitle("\(formatted)", for: .normal)
-            
-            
             //paid
             if booking!.totalPricePaid == true {
                 paidButton.backgroundColor = .ombGreen
@@ -101,33 +93,47 @@ class EventDetailsViewController: UIViewController {
             }
             
             //Gig stuff
-            var gigVenue = JSON()
-            var gigStart = Date()
-            var gigEnd = Date()
+//            var gigService = String()
+//            var gigVenue = JSON()
+//            var gigStart = Date()
+//            var gigEnd = Date()
             
             for i in 0..<(booking!.gigs.count) {
                 if booking!.gigs[i]._id == gigID {
-                    gigVenue = booking!.gigs[i].venue
-                    gigStart = booking!.gigs[i].startTime
-                    gigEnd = booking!.gigs[i].endTime
+                    gig = booking!.gigs[i]
+//                    gigService = booking!.gigs[i].service
+//                    gigVenue = booking!.gigs[i].venue
+//                    gigStart = booking!.gigs[i].startTime
+//                    gigEnd = booking!.gigs[i].endTime
                 }
             }
             
-            //venue
-            venueButton.setTitle("\(gigVenue["name"].stringValue)", for: .normal)
-            
-            
+            if gig != nil {
+                
+                //service
+                serviceLabel.text = gig!.service
+                //venue
+                venueButton.setTitle("\(gig!.venue["name"].stringValue)", for: .normal)
+                
+                dateFormatter.dateFormat = "dd-MMM-yyyy  H:mm"
+                //start
+                startLabel.text = "Start: \(dateFormatter.string(from: gig!.startTime))"
+                
+                //end
+                endLabel.text = "End: \(dateFormatter.string(from: gig!.endTime))"
+                
+                //price
+                let price = gig!.price
+                let currencySymbol = getSymbol(forCurrencyCode: booking!.currency)
+                let formatted = String(format: "\(currencySymbol ?? "")%.2f", price)
+                
+                priceButton.setTitle("\(formatted)", for: .normal)
+                
+            }
+
             //hirer
             let hirerName: String = "\(booking!.hirer["firstName"]) \(booking!.hirer["surname"])"
             hirerButton.setTitle("\(hirerName)", for: .normal)
-            
-            
-            dateFormatter.dateFormat = "dd-MMM-yyyy  H:mm"
-            //start
-            startLabel.text = "Start: \(dateFormatter.string(from: gigStart))"
-            
-            //end
-            endLabel.text = "End: \(dateFormatter.string(from: gigEnd))"
 
             //notes
             notesLabel.text = "Notes:\n\(booking!.notes)"
@@ -146,14 +152,36 @@ class EventDetailsViewController: UIViewController {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let navVC = segue.destination as! UINavigationController
+        let destinationVC = navVC.viewControllers.first as! EditEventTableViewController
+        
+        var eventDetailsToSend = Array<(String, Any)>()
+        
+        if gig != nil{
+            eventDetailsToSend.append(("Event name", gig!.service))
+            eventDetailsToSend.append(("Start", gig!.startTime))
+            eventDetailsToSend.append(("End", gig!.endTime))
+            eventDetailsToSend.append(("Price", gig!.price))
+        }
+        
+        if booking != nil {
+            eventDetailsToSend.append(("Notes", booking!.notes))
+        }
+        
+        destinationVC.eventDetails = eventDetailsToSend
+        
     }
-    */
+    
+    @IBAction func editEventPressed() {
+        performSegue(withIdentifier: K.editEventSegue, sender: self)
+    }
+    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
+
 
 }

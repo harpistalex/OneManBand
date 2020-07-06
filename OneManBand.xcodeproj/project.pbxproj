@@ -10,6 +10,13 @@
 		2F29F2D124A5FC45007DE5A3 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F29F2D024A5FC1C007DE5A3 /* fa-solid-900.ttf */; };
 		2F5EACF124A3898800C32599 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EACF024A3898800C32599 /* K.swift */; };
 		2F5EACF524A39CC900C32599 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EACF424A39CC900C32599 /* LoadingOverlay.swift */; };
+		2F8F64DC24B087E200F3A0FF /* EditEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F64DB24B087E200F3A0FF /* EditEventTableViewController.swift */; };
+		2F8F64DF24B0A17200F3A0FF /* EditEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F64DD24B0A17200F3A0FF /* EditEventCell.swift */; };
+		2F8F64E024B0A17200F3A0FF /* EditEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8F64DE24B0A17200F3A0FF /* EditEventCell.xib */; };
+		2F8F64E324B0A19600F3A0FF /* EditNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F64E124B0A19600F3A0FF /* EditNotesCell.swift */; };
+		2F8F64E424B0A19600F3A0FF /* EditNotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8F64E224B0A19600F3A0FF /* EditNotesCell.xib */; };
+		2F8F64E724B0A1D400F3A0FF /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F64E524B0A1D400F3A0FF /* DatePickerCell.swift */; };
+		2F8F64E824B0A1D400F3A0FF /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8F64E624B0A1D400F3A0FF /* DatePickerCell.xib */; };
 		2F94244D24A0F7F900FFD000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94244C24A0F7F900FFD000 /* AppDelegate.swift */; };
 		2F94244F24A0F7F900FFD000 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94244E24A0F7F900FFD000 /* SceneDelegate.swift */; };
 		2F94245124A0F7F900FFD000 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94245024A0F7F900FFD000 /* LoginViewController.swift */; };
@@ -38,6 +45,13 @@
 		2F29F2D024A5FC1C007DE5A3 /* fa-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-solid-900.ttf"; sourceTree = "<group>"; };
 		2F5EACF024A3898800C32599 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		2F5EACF424A39CC900C32599 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		2F8F64DB24B087E200F3A0FF /* EditEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventTableViewController.swift; sourceTree = "<group>"; };
+		2F8F64DD24B0A17200F3A0FF /* EditEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventCell.swift; sourceTree = "<group>"; };
+		2F8F64DE24B0A17200F3A0FF /* EditEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditEventCell.xib; sourceTree = "<group>"; };
+		2F8F64E124B0A19600F3A0FF /* EditNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotesCell.swift; sourceTree = "<group>"; };
+		2F8F64E224B0A19600F3A0FF /* EditNotesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNotesCell.xib; sourceTree = "<group>"; };
+		2F8F64E524B0A1D400F3A0FF /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		2F8F64E624B0A1D400F3A0FF /* DatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		2F94244924A0F7F900FFD000 /* OneManBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneManBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F94244C24A0F7F900FFD000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F94244E24A0F7F900FFD000 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +177,7 @@
 				2F94245024A0F7F900FFD000 /* LoginViewController.swift */,
 				2F94246324A1005B00FFD000 /* CalendarViewController.swift */,
 				2F9678AE24ACC47E00BC1100 /* EventDetailsViewController.swift */,
+				2F8F64DB24B087E200F3A0FF /* EditEventTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,6 +187,12 @@
 			children = (
 				2FD9365F24A1077300BBA347 /* DateCollectionViewCell.swift */,
 				2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */,
+				2F8F64DD24B0A17200F3A0FF /* EditEventCell.swift */,
+				2F8F64DE24B0A17200F3A0FF /* EditEventCell.xib */,
+				2F8F64E124B0A19600F3A0FF /* EditNotesCell.swift */,
+				2F8F64E224B0A19600F3A0FF /* EditNotesCell.xib */,
+				2F8F64E524B0A1D400F3A0FF /* DatePickerCell.swift */,
+				2F8F64E624B0A1D400F3A0FF /* DatePickerCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -247,9 +268,12 @@
 			files = (
 				2FD9366224A1077300BBA347 /* DateCollectionViewCell.xib in Resources */,
 				2F29F2D124A5FC45007DE5A3 /* fa-solid-900.ttf in Resources */,
+				2F8F64E024B0A17200F3A0FF /* EditEventCell.xib in Resources */,
 				2F94245924A0F7FD00FFD000 /* LaunchScreen.storyboard in Resources */,
 				2F94245624A0F7FD00FFD000 /* Assets.xcassets in Resources */,
+				2F8F64E424B0A19600F3A0FF /* EditNotesCell.xib in Resources */,
 				2F94245424A0F7F900FFD000 /* Main.storyboard in Resources */,
+				2F8F64E824B0A1D400F3A0FF /* DatePickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,15 +333,19 @@
 				2FD9366424A24CFC00BBA347 /* Booking.swift in Sources */,
 				2FD9366E24A377DB00BBA347 /* CustomColours.swift in Sources */,
 				2F5EACF124A3898800C32599 /* K.swift in Sources */,
+				2F8F64E324B0A19600F3A0FF /* EditNotesCell.swift in Sources */,
 				2F94246624A1011200FFD000 /* DateExtensions.swift in Sources */,
 				2F94246824A1015A00FFD000 /* CustomCalendar.swift in Sources */,
 				2FD9366624A24D0900BBA347 /* Gig.swift in Sources */,
 				2F5EACF524A39CC900C32599 /* LoadingOverlay.swift in Sources */,
+				2F8F64E724B0A1D400F3A0FF /* DatePickerCell.swift in Sources */,
 				2F94245124A0F7F900FFD000 /* LoginViewController.swift in Sources */,
 				2FD9366124A1077300BBA347 /* DateCollectionViewCell.swift in Sources */,
 				2F94244D24A0F7F900FFD000 /* AppDelegate.swift in Sources */,
 				2F94244F24A0F7F900FFD000 /* SceneDelegate.swift in Sources */,
 				2F9678B324AE114E00BC1100 /* FullBooking.swift in Sources */,
+				2F8F64DC24B087E200F3A0FF /* EditEventTableViewController.swift in Sources */,
+				2F8F64DF24B0A17200F3A0FF /* EditEventCell.swift in Sources */,
 				2FD9366824A24DBF00BBA347 /* Address.swift in Sources */,
 				2F94246B24A1021F00FFD000 /* Networking.swift in Sources */,
 				2F9678AF24ACC47E00BC1100 /* EventDetailsViewController.swift in Sources */,

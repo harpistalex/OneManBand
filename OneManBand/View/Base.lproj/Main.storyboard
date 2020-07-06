@@ -590,7 +590,13 @@
                         <viewLayoutGuide key="safeArea" id="FXJ-rT-bzK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Event Details" id="sAJ-ya-OuE">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="HX2-SZ-vtw"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="HX2-SZ-vtw">
+                            <connections>
+                                <segue destination="uiT-pm-GI4" kind="popoverPresentation" identifier="goToEditEvent" popoverAnchorBarButtonItem="HX2-SZ-vtw" id="Jzq-X9-2Hg">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="confirmedButton" destination="H5R-9v-xmI" id="bcY-Oh-Vj3"/>
@@ -607,7 +613,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrK-KP-3B9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2505" y="138"/>
+            <point key="canvasLocation" x="2499" y="135"/>
+        </scene>
+        <!--Edit Event-->
+        <scene sceneID="m8D-s7-Zsf">
+            <objects>
+                <tableViewController title="Edit Event" id="rPN-eT-n5z" customClass="EditEventTableViewController" customModule="OneManBand" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WGa-Fp-W3e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nhf-bb-wmg">
+                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nhf-bb-wmg" id="1nj-1i-vp4">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rPN-eT-n5z" id="u9J-fS-6Az"/>
+                            <outlet property="delegate" destination="rPN-eT-n5z" id="rBh-Mr-HBZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Tq9-gk-EwM">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="a5A-3n-wZH">
+                            <connections>
+                                <action selector="cancelPressed:" destination="rPN-eT-n5z" id="g3A-zg-chC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="yNR-C1-8d1">
+                            <connections>
+                                <action selector="savePressed:" destination="rPN-eT-n5z" id="I3L-9A-BLc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="MnU-P5-F4L" kind="unwind" identifier="unwindEditEvent" unwindAction="unwind:" id="vvF-2I-TT6"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nKd-Z4-thk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="MnU-P5-F4L" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4185" y="134.1549295774648"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jvj-DF-ohZ">
@@ -626,6 +676,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEG-iI-zbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fu1-xq-iHd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uiT-pm-GI4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7nd-zG-mMB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rPN-eT-n5z" kind="relationship" relationship="rootViewController" id="GOl-jw-P9Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYK-fW-3y0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3187.5" y="134.1549295774648"/>
         </scene>
     </scenes>
 </document>

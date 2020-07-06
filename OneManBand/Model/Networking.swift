@@ -28,13 +28,6 @@ class Networking {
         let password: String
     }
     
-    struct EditGigData: Encodable {
-        let service: String
-        let startTime: String
-        let endTime: String
-        let price: String
-    }
-    
     private init() { }
     
     //MARK: - Networking functions
