@@ -32,7 +32,8 @@ class EventDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         getBookingData()
-        
+        print("bookingID: \(bookingID)")
+        print("gigID: \(gigID)")
 
     }
     
@@ -79,36 +80,16 @@ class EventDetailsViewController: UIViewController {
                 confirmedButton.setTitle("NOT CONFIRMED", for: .normal)
             }
             
-            //paid
-            if booking!.totalPricePaid == true {
-                paidButton.backgroundColor = .ombGreen
-                paidButton.setTitleColor(.white, for: .normal)
-                paidButton.setTitle("PAID", for: .normal)
-                
-            } else {
-                paidButton.backgroundColor = .ombDarkGrey
-                paidButton.setTitleColor(.ombLightPurple, for: .normal)
-                paidButton.setTitle("NOT PAID", for: .normal)
-                
-            }
-            
             //Gig stuff
-//            var gigService = String()
-//            var gigVenue = JSON()
-//            var gigStart = Date()
-//            var gigEnd = Date()
-            
             for i in 0..<(booking!.gigs.count) {
                 if booking!.gigs[i]._id == gigID {
                     gig = booking!.gigs[i]
-//                    gigService = booking!.gigs[i].service
-//                    gigVenue = booking!.gigs[i].venue
-//                    gigStart = booking!.gigs[i].startTime
-//                    gigEnd = booking!.gigs[i].endTime
                 }
             }
             
             if gig != nil {
+                
+                print("updateUI gig: \(gig)")
                 
                 //service
                 serviceLabel.text = gig!.service
@@ -128,6 +109,19 @@ class EventDetailsViewController: UIViewController {
                 let formatted = String(format: "\(currencySymbol ?? "")%.2f", price)
                 
                 priceButton.setTitle("\(formatted)", for: .normal)
+                
+                //paid
+                if gig!.paid == true {
+                    paidButton.backgroundColor = .ombGreen
+                    paidButton.setTitleColor(.white, for: .normal)
+                    paidButton.setTitle("PAID", for: .normal)
+                    
+                } else {
+                    paidButton.backgroundColor = .ombDarkGrey
+                    paidButton.setTitleColor(.ombLightPurple, for: .normal)
+                    paidButton.setTitle("NOT PAID", for: .normal)
+                    
+                }
                 
             }
 
@@ -151,6 +145,40 @@ class EventDetailsViewController: UIViewController {
         return locale.displayName(forKey: .currencySymbol, value: code)
     }
     
+    @IBAction func confirmedPressed() {
+        
+        booking?.confirmed.toggle()
+        
+        let confirmedParamters = EditBookingData(bookingType: nil, confirmed: booking?.confirmed, service: nil, notes: nil, invoiced: nil, totalPricePaid: nil, totalPrice: nil)
+        
+        Networking.shared.editBooking(bookingID: bookingID, parameters: confirmedParamters) { (ApiResponse) in
+            switch ApiResponse.success {
+            case true: self.updateUI()
+            default: print("Failed to save data") //TODO: Toast?
+            }
+        }
+    }
+    
+    @IBAction func paidPressed() {
+        
+        for i in 0..<(booking!.gigs.count) {
+            if booking!.gigs[i]._id == gigID {
+                booking!.gigs[i].paid.toggle()
+            }
+        }
+        
+        gig?.paid.toggle()
+        
+        let paidParameters = EditGigData(service: nil, startTime: nil, endTime: nil, price: nil, paid: gig?.paid)
+        
+        Networking.shared.editGig(bookingID: bookingID, gigID: gigID, parameters: paidParameters) { (ApiResponse) in
+            switch ApiResponse.success {
+            case true: self.updateUI()
+            default: print("Failed to save data") //TODO: Toast?
+            }
+        }
+        
+    }
 
 
     // MARK: - Navigation
@@ -173,6 +201,8 @@ class EventDetailsViewController: UIViewController {
         }
         
         destinationVC.eventDetails = eventDetailsToSend
+        destinationVC.bookingID = bookingID
+        destinationVC.gigID = gigID
         
     }
     

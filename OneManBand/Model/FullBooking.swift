@@ -61,10 +61,7 @@ struct FullBooking: Encodable {
         let totalPrice = json["userId"].floatValue
         
         let booking = FullBooking(hirer: hirer, clients: clients, bookingType: bookingType, confirmed: confirmed, service: service, notes: notes, invoice: invoice, invoiced: invoiced, totalPricePaid: totalPricePaid, adjustment: adjustment, currency: currency, _id: _id, gigs: gigs, userId: userId, tasks: tasks, quotationDate: quotationDate, totalPrice: totalPrice)
-        
-        print("booking parsed: \(booking)")
             
-        
         return booking
         
     }

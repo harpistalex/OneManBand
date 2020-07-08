@@ -27,6 +27,7 @@ class EditEventTableViewController: UITableViewController {
         super.viewDidLoad()
         
         dateFormatter.dateFormat = "dd-MMM-yyyy  H:mm"
+        jsonDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         tableView.register(UINib(nibName: K.editEventEditEventCellName, bundle: nil), forCellReuseIdentifier: K.editEventEditEventCellID)
         tableView.register(UINib(nibName: K.editEventDatePickerCellName, bundle: nil), forCellReuseIdentifier: K.editEventDatePickerCellID)
@@ -171,7 +172,7 @@ class EditEventTableViewController: UITableViewController {
                 tableView.deselectRow(at: indexPath, animated: true)
                 notesIndexPath!.row += 1
                 
-                //Details don't contain date:
+            //Details don't contain date:
             } else {
                 self.datePickerIndexPath = nil
                 
@@ -212,35 +213,39 @@ class EditEventTableViewController: UITableViewController {
     }
     
     
-
-
-    
-    //TODO: Callback stack
-    //Call Update Booking, THEN call Update Gig.
-    
     //MARK: - Save/Cancel
     
     @IBAction func savePressed(_ sender: Any) {
         
         //self.activityIndicator.startAnimating()
         
-//        let parameters = Networking.EditGigData(service: eventDetails[0].1 as! String,
-//                                        startTime: jsonDateFormatter.string(from: eventDetails[2].1 as! Date),
-//                                        endTime: jsonDateFormatter.string(from: eventDetails[3].1 as! Date),
-//                                        price: eventDetails[4].1 as! String)
-//
-//        Networking.shared.editBooking(bookingID: bookingID, gigID: gigID, parameters: parameters) { (ApiResponse) in
-//
-//            switch ApiResponse.success {
-//            case true: self.performSegue(withIdentifier: K.editEventUnwind, sender: self)
-//            default: print("Failed to save data") //TODO: Toast?
-//            }
-            
+       print("eventDetails: \(eventDetails)")
+        let gigParameters = EditGigData(service: (eventDetails[0].1 as! String),
+                                        startTime: jsonDateFormatter.string(from: eventDetails[1].1 as! Date),
+                                        endTime: jsonDateFormatter.string(from: eventDetails[2].1 as! Date),
+                                        price: (eventDetails[3].1 as! Float),
+                                        paid: nil)
+        
+        let bookingParameters = EditBookingData(bookingType: nil, confirmed: nil, service: nil, notes: (eventDetails[4].1 as! String), invoiced: nil, totalPricePaid: nil, totalPrice: nil)
+        
+        Networking.shared.editBooking(bookingID: bookingID, parameters: bookingParameters) { (ApiResponse) in
+
+            switch ApiResponse.success {
+            case true:
+                Networking.shared.editGig(bookingID: self.bookingID, gigID: self.gigID, parameters: gigParameters) { (ApiResponse) in
+                switch ApiResponse.success {
+                case true: self.performSegue(withIdentifier: K.editEventUnwind, sender: self)
+                default: print("Failed to save data") //TODO: Toast?
+                }
+
+            }
+            default: print("Failed to save data") //TODO: Toast?
+            }
+
             //self.activityIndicator.stopAnimating()
-//
-//        }
-        
-        
+                    
+                
+        }
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
@@ -250,15 +255,12 @@ class EditEventTableViewController: UITableViewController {
     }
 
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let destinationVC = segue.destination as! EventDetailsViewController
+        destinationVC.getBookingData()
     }
-    */
 
 }
 
@@ -279,19 +281,7 @@ extension EditEventTableViewController: DatePickerDelegate {
         if datePickerIndexPath == indexPath {
             return CGFloat(162.0)
         } else if notesIndexPath == indexPath {
-//            print(tableView.cellForRow(at: notesIndexPath!)?.frame.height)
-//            return CGFloat(200)
-            //
-//            let minimalLastCellHeight = CGFloat(200)
-//            guard let previousCell = tableView.visibleCells.last else {
-//                return minimalLastCellHeight
-//            }
-//            let lowestYCoordinate = previousCell.frame.maxY // low corner Y coordinate of previous cell
-//            let availableHeight = view.frame.maxY - previousCell.frame.maxY
-//            return max(availableHeight - lowestYCoordinate, minimalLastCellHeight)
-            //
             return remainingSpace
-
         } else {
             return CGFloat(44)
         }
@@ -323,9 +313,15 @@ extension EditEventTableViewController: UITextViewDelegate {
         textView.resignFirstResponder()
         print("didEndEditing: \(textView.text ?? "")")
         
-        //Save value to eventDetails array.
+        //Save string value to eventDetails array.
         if eventDetailsReference?.row == 0 || eventDetailsReference?.row == 4 {
             eventDetails[eventDetailsReference!.row].1 = textView.text ?? ""
+            print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
+        }
+        
+        //price needs to be float.
+        if eventDetailsReference?.row == 3 {
+            eventDetails[eventDetailsReference!.row].1 = Float(textView.text) ?? 0
             print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
         }
         
@@ -341,6 +337,7 @@ extension EditEventTableViewController: UITextViewDelegate {
             if textView.tag == 1 {
                return textLimit(existingText: textView.text, newText: text, limit: 20)
             } else {
+                //notes cell
                 return true
             }
             
@@ -376,15 +373,3 @@ extension UITableViewController {
     }
 }
 
-//MARK: - Parameter formats
-
-struct EditGigData: Encodable {
-    let service: String
-    let startTime: String
-    let endTime: String
-    let price: String
-}
-
-struct EditNotesData: Encodable {
-    let notes: String
-}

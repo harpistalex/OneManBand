@@ -114,7 +114,7 @@ class CalendarViewController: UIViewController {
             dateArray = customCalendar.createDateArray(firstMonday: firstMonday, lastSunday: lastSunday)
             bookingBooleans = Array<Bool>(repeating: false, count: dateArray.count)
             
-            print("dateArray count and bookingsBooleans count: \(dateArray.count) \(bookingBooleans.count)")
+            //print("dateArray count and bookingsBooleans count: \(dateArray.count) \(bookingBooleans.count)")
             
         }
     
@@ -164,11 +164,11 @@ class CalendarViewController: UIViewController {
                     print(bookings[x].gig)
                     
                     let dateOfGig = bookings[x].gig.startTime
-                    print("dateOfGig: \(dateOfGig)")
+                    //print("dateOfGig: \(dateOfGig)")
                     
                     for i in 0..<dateArray.count {
                         if compareDates(dateOfBooking: dateOfGig, dateInCalendar: dateArray[i]) {
-                            print("Date in calendar: \(dateArray[i])")
+                            //print("Date in calendar: \(dateArray[i])")
                             bookingBooleans[i] = true
                         }
                         
@@ -249,7 +249,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         bookingPointers = []
         eventDetailsTableView.reloadData()
         
-        print("indexPath.item: \(indexPath.item)")
+        //print("indexPath.item: \(indexPath.item)")
         let dateSelected = dateArray[indexPath.item]
         
         for i in 0..<bookings.count {
@@ -257,7 +257,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             let dateOfBooking = bookings[i].gig.startTime
                 
                 if compareDates(dateOfBooking: dateOfBooking, dateInCalendar: dateSelected) {
-                    print("Selected booking: \(bookings[i].gig.service)")
+                    //print("Selected booking: \(bookings[i].gig.service)")
                     bookingPointers.append(i)
                     eventDetailsTableView.reloadData()
                     
@@ -307,7 +307,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.eventDetailsTableViewCellID, for: indexPath)
             
         if bookings.count != 0 {
-            print("Label: \(bookings[bookingPointers[indexPath.row]].gig.service)")
+            //print("Label: \(bookings[bookingPointers[indexPath.row]].gig.service)")
             //print("Label bookingsJson: \(bookingsJson.count)")
             //print("Label bookingPointers: \(bookingPointers[indexPath.row])")
             cell.textLabel?.text = "Label: \(bookings[bookingPointers[indexPath.row]].gig.service)"

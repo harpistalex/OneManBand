@@ -21,13 +21,6 @@ class Networking {
         "Authorization": ""
     ]
     
-    //MARK: - Parameter structs
-    
-    struct LoginData: Encodable {
-        let email: String
-        let password: String
-    }
-    
     private init() { }
     
     //MARK: - Networking functions
@@ -159,8 +152,8 @@ class Networking {
         
     }
     
-    //TODO: Edit booking
-    func editBooking(bookingID: String, gigID: String, parameters: EditGigData, completionHandler: @escaping (ApiResponse) -> ()) {
+
+    func editGig(bookingID: String, gigID: String, parameters: EditGigData, completionHandler: @escaping (ApiResponse) -> ()) {
         
         let bookingURL: String = "\(ombURL)/api/bookings/\(bookingID)/gigs/\(gigID)"
         
@@ -191,7 +184,35 @@ class Networking {
 
     }
     
-    
+    func editBooking(bookingID: String, parameters: EditBookingData, completionHandler: @escaping (ApiResponse) -> ()) {
+        
+        let bookingURL: String = "\(ombURL)/api/bookings/\(bookingID)"
+        
+        AF.request(bookingURL, method: .put, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers).validate().response {
+
+            response in
+            switch response.result {
+            case .success(let value):
+                print("viewDidLoad: Success! Saved the data.")
+                
+                if let result = value {
+                    let json = JSON(result)
+                    print("json result: \(json)")
+                    completionHandler(ApiResponse(success: true, data: json as JSON))
+
+                } else {
+                    print("viewDidLoad: Could not save data")
+                }
+
+            case .failure(_):
+        
+                print("Error \(String(describing: response))")
+                completionHandler(ApiResponse(success: false))
+
+            }
+        }
+        
+    }
 
 }
 
@@ -208,4 +229,29 @@ class ApiResponse {
     }
 }
 
+//MARK: - Parameter structs
+ 
+ struct LoginData: Encodable {
+     let email: String
+     let password: String
+ }
 
+ struct EditGigData: Encodable {
+     let service: String?
+     let startTime: String?
+     let endTime: String?
+     let price: Float?
+     let paid: Bool?
+     
+ }
+ 
+ struct EditBookingData: Encodable {
+     let bookingType: String?
+     let confirmed: Bool?
+     let service: String?
+     let notes: String?
+     let invoiced: Bool?
+     let totalPricePaid: Bool?
+     let totalPrice: String?
+     
+ }

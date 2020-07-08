@@ -446,6 +446,9 @@
                                                         <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="confirmedPressed" destination="7b0-rw-nJM" eventType="touchUpInside" id="iZ6-CO-TFi"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-Q2-bve" customClass="CustomButton" customModule="OneManBand" customModuleProvider="target">
                                                 <rect key="frame" x="72" y="0.0" width="12" height="30"/>
@@ -498,6 +501,9 @@
                                                         <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="paidPressed" destination="7b0-rw-nJM" eventType="touchUpInside" id="Uuq-La-RHm"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="b5v-sS-CL8">
                                                 <rect key="frame" x="148" y="0.0" width="108" height="30"/>

@@ -63,6 +63,7 @@ struct Gig: Encodable {
                 let startTime: Date = dateFormatter.date(from: json["startTime"].stringValue)!
                 let endTime: Date = dateFormatter.date(from: json["endTime"].stringValue)!
                 let paid: Bool = json["paid"].boolValue
+            print("parseJsonGig paid: \(paid)")
                 let _id: String = json["_id"].stringValue
                 let price: Float = json["price"].floatValue
     
