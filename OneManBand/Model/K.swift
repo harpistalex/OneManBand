@@ -27,4 +27,6 @@ struct K {
     static let editEventDatePickerCellID = "datePickerCell"
     static let editEventEditNotesCellID = "notesCell"
     
+    static let venueDetailsSegue = "goToVenue"
+    static let hirerDetailsSegue = "goToHirer"
 }

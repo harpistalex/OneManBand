@@ -11,7 +11,7 @@ import SwiftyJSON
 
 struct FullBooking: Encodable {
     
-    var hirer: JSON
+    var hirer: Contact
     var clients: Array<JSON>
     var bookingType: String
     var confirmed: Bool
@@ -35,7 +35,7 @@ struct FullBooking: Encodable {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             
-        let hirer = json["hirer"]
+        let hirer = Contact.parseJsonContact(json: json["hirer"]) 
         let clients = json["hirer"].arrayValue
         let bookingType = json["bookingType"].stringValue
         let confirmed = json["confirmed"].boolValue

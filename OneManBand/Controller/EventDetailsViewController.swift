@@ -41,9 +41,16 @@ class EventDetailsViewController: UIViewController {
     
     func getBookingData() {
         
-        //TODO: ActivityIndicator
+        //start spinner if call takes longer than 0.5 seconds
         
-        //activityIndicator.startAnimating()
+        let loadingOverlay = LoadingOverlay(frame: view.bounds)
+        loadingOverlay.isHidden = true
+        view.addSubview(loadingOverlay)
+        
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { timer in
+            loadingOverlay.isHidden = false
+            print("loadingOverlay showing")
+        }
         
         Networking.shared.getBooking(eventID: bookingID) { (ApiResponse) in
             switch ApiResponse.success {
@@ -53,7 +60,9 @@ class EventDetailsViewController: UIViewController {
             self.updateUI()
             default: print("Failure")
             }
-            //self.activityIndicator.stopAnimating()
+            //stop spinner
+            loadingOverlay.removeFromSuperview()
+            timer.invalidate()
         }
         
     }
@@ -64,9 +73,9 @@ class EventDetailsViewController: UIViewController {
             
             //bookingType
             if booking!.bookingType == "lesson" {
-                serviceIcon.text = "\u{f19d}"
+                serviceIcon.text = Icons.lessons
             } else {
-                serviceIcon.text = "\u{f005}"
+                serviceIcon.text = Icons.gig
             }
             
             //confirmed
@@ -89,12 +98,12 @@ class EventDetailsViewController: UIViewController {
             
             if gig != nil {
                 
-                print("updateUI gig: \(gig)")
                 
                 //service
                 serviceLabel.text = gig!.service
+                
                 //venue
-                venueButton.setTitle("\(gig!.venue["name"].stringValue)", for: .normal)
+                venueButton.setTitle(gig!.venue.name, for: .normal)
                 
                 dateFormatter.dateFormat = "dd-MMM-yyyy  H:mm"
                 //start
@@ -126,12 +135,13 @@ class EventDetailsViewController: UIViewController {
             }
 
             //hirer
-            let hirerName: String = "\(booking!.hirer["firstName"]) \(booking!.hirer["surname"])"
-            hirerButton.setTitle("\(hirerName)", for: .normal)
+            let hirerName = "\(booking!.hirer.firstName) \(booking!.hirer.surname)"
+            hirerButton.setTitle(hirerName, for: .normal)
 
             //notes
-            notesLabel.text = "Notes:\n\(booking!.notes)"
+            notesLabel.text = booking!.notes
             notesLabel.textContainer.lineFragmentPadding = .zero
+            notesLabel.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         
     }
@@ -184,31 +194,74 @@ class EventDetailsViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navVC = segue.destination as! UINavigationController
-        let destinationVC = navVC.viewControllers.first as! EditEventTableViewController
         
-        var eventDetailsToSend = Array<(String, Any)>()
-        
-        if gig != nil{
-            eventDetailsToSend.append(("Event name", gig!.service))
-            eventDetailsToSend.append(("Start", gig!.startTime))
-            eventDetailsToSend.append(("End", gig!.endTime))
-            eventDetailsToSend.append(("Price", gig!.price))
+        //To edit
+        if segue.identifier == K.editEventSegue {
+            
+            let navVC = segue.destination as! UINavigationController
+            let destinationVC = navVC.viewControllers.first as! EditEventTableViewController
+            
+            var eventDetailsToSend = Array<(String, Any)>()
+            
+            if gig != nil {
+                eventDetailsToSend.append(("Event name", gig!.service))
+                eventDetailsToSend.append(("Start", gig!.startTime))
+                eventDetailsToSend.append(("End", gig!.endTime))
+                eventDetailsToSend.append(("Price", gig!.price))
+            }
+            
+            if booking != nil {
+                eventDetailsToSend.append(("Notes", booking!.notes))
+            }
+            
+            destinationVC.eventDetails = eventDetailsToSend
+            destinationVC.bookingID = bookingID
+            destinationVC.gigID = gigID
+            
         }
         
-        if booking != nil {
-            eventDetailsToSend.append(("Notes", booking!.notes))
+        //To venue
+        if segue.identifier == K.venueDetailsSegue {
+            
+            let navVC = segue.destination as! UINavigationController
+            let destinationVC = navVC.viewControllers.first as! VenueDetailsViewController
+            
+            if gig != nil {
+                destinationVC.venue = gig!.venue
+                print("VENUE ID: \(gig!.venue._id)")
+            }
+            
         }
         
-        destinationVC.eventDetails = eventDetailsToSend
-        destinationVC.bookingID = bookingID
-        destinationVC.gigID = gigID
+        //To hirer
+        if segue.identifier == K.hirerDetailsSegue {
+            
+            let navVC = segue.destination as! UINavigationController
+            let destinationVC = navVC.viewControllers.first as! HirerDetailsViewController
+            
+            if booking != nil {
+                destinationVC.hirer = booking!.hirer
+                print("CONTACT ID: \(booking!.hirer._id)")
+            }
+            
+        }
+        
+        
         
     }
     
     @IBAction func editEventPressed() {
         performSegue(withIdentifier: K.editEventSegue, sender: self)
     }
+    
+    @IBAction func venuePressed(_ sender: Any) {
+        performSegue(withIdentifier: K.venueDetailsSegue, sender: self)
+    }
+    
+    @IBAction func hirerPressed(_ sender: Any) {
+        performSegue(withIdentifier: K.hirerDetailsSegue, sender: self)
+    }
+    
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }

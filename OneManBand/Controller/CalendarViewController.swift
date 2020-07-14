@@ -28,6 +28,8 @@ class CalendarViewController: UIViewController {
     var bookingsInOneDay: Array<Booking> = []
     var bookingPointers: Array<Int> = []
     var selectedBooking: Booking?
+    
+    var indicatorTask: DispatchWorkItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,10 +132,16 @@ class CalendarViewController: UIViewController {
             let startDate = dateFormatter.string(from: firstMonday)
             let endDate = dateFormatter.string(from: lastSunday)
 
-            //start spinner
-            //TODO: only start spinner if call takes a certain amount of time?
+            //start spinner if call takes longer than 0.5 seconds
+            
             let loadingOverlay = LoadingOverlay(frame: view.bounds)
+            loadingOverlay.isHidden = true
             view.addSubview(loadingOverlay)
+            
+            let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { timer in
+                loadingOverlay.isHidden = false
+                print("loadingOverlay showing")
+            }
             
             Networking.shared.getBookingDates(currentMonth: currentMonth, firstMonday: firstMonday, lastSunday: lastSunday, startDate: startDate, endDate: endDate) { (ApiResponse) in
                 
@@ -146,8 +154,10 @@ class CalendarViewController: UIViewController {
                         
                     default: print("Failed to log in")
                     }
+                
                 //stop spinner
                 loadingOverlay.removeFromSuperview()
+                timer.invalidate()
                 
                 }
                   

@@ -28,7 +28,7 @@ struct Booking: Encodable {
             let invoiced: Bool = json[i]["invoiced"].boolValue
             let bookingType: String = json[i]["bookingType"].stringValue
             let confirmed: Bool = json[i]["confirmed"].boolValue
-            let contact: JSON = json[i]["contact"]
+            let contact: JSON = json[i]["hirer"]
             let gig: Gig = Gig.parseJsonGig(json: json[i]["gig"])
             
             bookingsArray.append(Booking(id: id, invoiced: invoiced, bookingType: bookingType, confirmed: confirmed, gig: gig, contact: contact))

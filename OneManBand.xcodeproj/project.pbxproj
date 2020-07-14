@@ -30,6 +30,9 @@
 		2F9466D024AF445400E9EF99 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9466CF24AF445400E9EF99 /* CustomButton.swift */; };
 		2F9678AF24ACC47E00BC1100 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9678AE24ACC47E00BC1100 /* EventDetailsViewController.swift */; };
 		2F9678B324AE114E00BC1100 /* FullBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9678B224AE114E00BC1100 /* FullBooking.swift */; };
+		2FC38A4F24BDF2720001C600 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC38A4E24BDF2720001C600 /* Icons.swift */; };
+		2FD5BA9A24BC9B640075F456 /* VenueDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD5BA9924BC9B640075F456 /* VenueDetailsViewController.swift */; };
+		2FD5BA9C24BC9B7A0075F456 /* HirerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD5BA9B24BC9B7A0075F456 /* HirerDetailsViewController.swift */; };
 		2FD9366124A1077300BBA347 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9365F24A1077300BBA347 /* DateCollectionViewCell.swift */; };
 		2FD9366224A1077300BBA347 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */; };
 		2FD9366424A24CFC00BBA347 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9366324A24CFC00BBA347 /* Booking.swift */; };
@@ -67,6 +70,9 @@
 		2F9466CF24AF445400E9EF99 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2F9678AE24ACC47E00BC1100 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		2F9678B224AE114E00BC1100 /* FullBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullBooking.swift; sourceTree = "<group>"; };
+		2FC38A4E24BDF2720001C600 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		2FD5BA9924BC9B640075F456 /* VenueDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailsViewController.swift; sourceTree = "<group>"; };
+		2FD5BA9B24BC9B7A0075F456 /* HirerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HirerDetailsViewController.swift; sourceTree = "<group>"; };
 		2FD9365F24A1077300BBA347 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD9366024A1077300BBA347 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
 		2FD9366324A24CFC00BBA347 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 			children = (
 				2F94245224A0F7F900FFD000 /* Main.storyboard */,
 				2FD9366D24A377DB00BBA347 /* CustomColours.swift */,
+				2FC38A4E24BDF2720001C600 /* Icons.swift */,
 				2F5EACF424A39CC900C32599 /* LoadingOverlay.swift */,
 				2F9466CF24AF445400E9EF99 /* CustomButton.swift */,
 				2F94246924A101B600FFD000 /* Custom Cells */,
@@ -178,6 +185,8 @@
 				2F94246324A1005B00FFD000 /* CalendarViewController.swift */,
 				2F9678AE24ACC47E00BC1100 /* EventDetailsViewController.swift */,
 				2F8F64DB24B087E200F3A0FF /* EditEventTableViewController.swift */,
+				2FD5BA9924BC9B640075F456 /* VenueDetailsViewController.swift */,
+				2FD5BA9B24BC9B7A0075F456 /* HirerDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,12 +335,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FC38A4F24BDF2720001C600 /* Icons.swift in Sources */,
 				2FD9366C24A250AE00BBA347 /* Contact.swift in Sources */,
 				2F9466D024AF445400E9EF99 /* CustomButton.swift in Sources */,
 				2F94246424A1005B00FFD000 /* CalendarViewController.swift in Sources */,
 				2FD9366A24A24FE700BBA347 /* Venue.swift in Sources */,
 				2FD9366424A24CFC00BBA347 /* Booking.swift in Sources */,
 				2FD9366E24A377DB00BBA347 /* CustomColours.swift in Sources */,
+				2FD5BA9A24BC9B640075F456 /* VenueDetailsViewController.swift in Sources */,
 				2F5EACF124A3898800C32599 /* K.swift in Sources */,
 				2F8F64E324B0A19600F3A0FF /* EditNotesCell.swift in Sources */,
 				2F94246624A1011200FFD000 /* DateExtensions.swift in Sources */,
@@ -342,6 +353,7 @@
 				2F94245124A0F7F900FFD000 /* LoginViewController.swift in Sources */,
 				2FD9366124A1077300BBA347 /* DateCollectionViewCell.swift in Sources */,
 				2F94244D24A0F7F900FFD000 /* AppDelegate.swift in Sources */,
+				2FD5BA9C24BC9B7A0075F456 /* HirerDetailsViewController.swift in Sources */,
 				2F94244F24A0F7F900FFD000 /* SceneDelegate.swift in Sources */,
 				2F9678B324AE114E00BC1100 /* FullBooking.swift in Sources */,
 				2F8F64DC24B087E200F3A0FF /* EditEventTableViewController.swift in Sources */,

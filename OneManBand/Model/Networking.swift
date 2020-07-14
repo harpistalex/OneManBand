@@ -213,6 +213,64 @@ class Networking {
         }
         
     }
+    
+    func getVenue(venueID: String, completionHandler: @escaping (ApiResponse) -> ()) {
+        
+        let venueURL: String = "\(ombURL)/api/venues/\(venueID)"
+        
+        AF.request(venueURL, method: .get, headers: headers).response {
+            response in
+        
+            switch response.result {
+            case .success(let value):
+                print("Success! Got the venue data.")
+                
+                if let result = value {
+                    let json = JSON(result)
+                    completionHandler(ApiResponse(success: true, data: json as JSON))
+
+                } else {
+                    print("no venue found")
+                }
+
+            case .failure(_):
+        
+                print("Error \(String(describing: response))")
+                completionHandler(ApiResponse(success: false))
+
+            }
+        }
+        
+    }
+    
+    func getContact(contactID: String, completionHandler: @escaping (ApiResponse) -> ()) {
+        
+        let contactURL: String = "\(ombURL)/api/contacts/\(contactID)"
+        
+        AF.request(contactURL, method: .get, headers: headers).response {
+            response in
+        
+            switch response.result {
+            case .success(let value):
+                print("Success! Got the venue data.")
+                
+                if let result = value {
+                    let json = JSON(result)
+                    completionHandler(ApiResponse(success: true, data: json as JSON))
+
+                } else {
+                    print("no venue found")
+                }
+
+            case .failure(_):
+        
+                print("Error \(String(describing: response))")
+                completionHandler(ApiResponse(success: false))
+
+            }
+        }
+        
+    }
 
 }
 

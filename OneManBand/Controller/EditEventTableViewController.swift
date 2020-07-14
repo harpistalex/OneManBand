@@ -34,7 +34,6 @@ class EditEventTableViewController: UITableViewController {
         tableView.register(UINib(nibName: K.editEventEditNotesCellName, bundle: nil), forCellReuseIdentifier: K.editEventEditNotesCellID)
         
         print(bookingID)
-        //getBookingData()
         
         self.setupResignFirstResponderOnTap()
 
@@ -60,7 +59,6 @@ class EditEventTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         
          if datePickerIndexPath == indexPath {
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePickerCell") as! DatePickerCell
@@ -308,7 +306,7 @@ extension EditEventTableViewController: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.backgroundColor = UIColor.white
+        textView.backgroundColor = .ombLightGrey
         textView.isUserInteractionEnabled = false
         textView.resignFirstResponder()
         print("didEndEditing: \(textView.text ?? "")")

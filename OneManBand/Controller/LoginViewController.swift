@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
+    var indicatorTask: DispatchWorkItem?
     
     //TEST
     let testEmail = "simon@traxsound.co.uk"
@@ -43,8 +43,8 @@ class LoginViewController: UIViewController {
         */
         
         let loadingOverlay = LoadingOverlay(frame: view.bounds)
-        view.addSubview(loadingOverlay)
-        
+            self.view.addSubview(loadingOverlay)
+
             Networking.shared.login(email: testEmail, password: testPassword) { (ApiResponse) in
 
                 switch ApiResponse.success {
