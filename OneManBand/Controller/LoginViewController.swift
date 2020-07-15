@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginView: UIView!
     
     var indicatorTask: DispatchWorkItem?
     
@@ -23,6 +24,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //view rounded corners
+        loginView.layer.cornerRadius = 5
         
     }
 
@@ -57,7 +60,6 @@ class LoginViewController: UIViewController {
     
     }
     
-    
-    
+
 }
 

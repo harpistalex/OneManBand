@@ -22,6 +22,7 @@ class EditEventTableViewController: UITableViewController {
     let dateFormatter = DateFormatter()
     
     var remainingSpace = CGFloat()
+    var notesCellHeight = CGFloat()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,6 @@ class EditEventTableViewController: UITableViewController {
         
         self.setupResignFirstResponderOnTap()
 
-        
-        
     }
 
     // MARK: - Table view data source
@@ -116,6 +115,7 @@ class EditEventTableViewController: UITableViewController {
             
             //To calculate cell size
             remainingSpace = view.frame.maxY - textViewCell.frame.minY
+            notesCellHeight = remainingSpace
             return textViewCell
 
         } else {
@@ -274,18 +274,6 @@ extension EditEventTableViewController: DatePickerDelegate {
         tableView.reloadRows(at: [indexPath], with: .none)
     }
     
-    //Set the height of the cells according to which cell is showing.
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if datePickerIndexPath == indexPath {
-            return CGFloat(162.0)
-        } else if notesIndexPath == indexPath {
-            return remainingSpace
-        } else {
-            return CGFloat(44)
-        }
-    }
-    
-    
     //To find the index path needed to insert the date picker, when the user selects a row.
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
@@ -294,34 +282,62 @@ extension EditEventTableViewController: DatePickerDelegate {
         return IndexPath(row: indexPath.row + 1, section: indexPath.section)
        }
     }
+    
+    //MARK: - Set cell height
+    
+    //Set the height of the cells according to which cell is showing.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if datePickerIndexPath == indexPath {
+            return CGFloat(162.0)
+        } else if notesIndexPath == indexPath {
+            return remainingSpace / 1.20
+        } else {
+            return CGFloat(44)
+        }
+    }
 
 }
 
 //MARK: - TextView delegates
 
 extension EditEventTableViewController: UITextViewDelegate {
+    
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.backgroundColor = .ombLightGrey
+        //textView.backgroundColor = .ombLightGrey
+        //textView.scrollRangeToVisible(textView.selectedRange)
+        
+        //To calculate cell size
+        remainingSpace = (view.frame.maxY - textView.frame.minY) / 2
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+        
+        
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.backgroundColor = .ombLightGrey
+        //textView.backgroundColor = .ombLightGrey
         textView.isUserInteractionEnabled = false
         textView.resignFirstResponder()
-        print("didEndEditing: \(textView.text ?? "")")
+        //print("didEndEditing: \(textView.text ?? "")")
         
         //Save string value to eventDetails array.
         if eventDetailsReference?.row == 0 || eventDetailsReference?.row == 4 {
             eventDetails[eventDetailsReference!.row].1 = textView.text ?? ""
-            print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
+            //print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
         }
         
         //price needs to be float.
         if eventDetailsReference?.row == 3 {
             eventDetails[eventDetailsReference!.row].1 = Float(textView.text) ?? 0
-            print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
+            //print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
         }
+        
+        //To calculate cell size
+        remainingSpace = notesCellHeight
+        tableView.beginUpdates()
+        tableView.endUpdates()
         
     }
     

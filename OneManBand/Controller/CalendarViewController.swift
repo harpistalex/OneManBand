@@ -243,7 +243,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         
         //Colour previous and next month's dates:
         if dateArray[indexPath.item].getMonthNum() != dateShown.getMonthNum() {
-            cell.dateLabel.textColor = UIColor.ombDarkGrey
+            cell.dateLabel.textColor = UIColor.ombGrey
         }
         
         if bookingBooleans[indexPath.item] {
@@ -259,7 +259,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         bookingPointers = []
         eventDetailsTableView.reloadData()
         
-        //print("indexPath.item: \(indexPath.item)")
         let dateSelected = dateArray[indexPath.item]
         
         for i in 0..<bookings.count {
@@ -305,8 +304,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 
 //MARK: - TableView
 
-//TODO: Clear tableView when back or next is pressed.
-
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -317,10 +314,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.eventDetailsTableViewCellID, for: indexPath)
             
         if bookings.count != 0 {
-            //print("Label: \(bookings[bookingPointers[indexPath.row]].gig.service)")
-            //print("Label bookingsJson: \(bookingsJson.count)")
-            //print("Label bookingPointers: \(bookingPointers[indexPath.row])")
-            cell.textLabel?.text = "Label: \(bookings[bookingPointers[indexPath.row]].gig.service)"
+            cell.textLabel?.text = bookings[bookingPointers[indexPath.row]].gig.service
         }
         
         return cell
@@ -328,12 +322,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //TODO:- Deselect row when returned back from next screen.
-        
         let pointer = bookingPointers[indexPath.row]
         selectedBooking = bookings[pointer]
         performSegue(withIdentifier: K.eventDetailsSegue, sender: self)
-        tableView.deselectRow(at: indexPath, animated: true) //TODO: Is this the correct place for this or should it be above segue?
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     

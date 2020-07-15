@@ -21,6 +21,12 @@ class DateCollectionViewCell: UICollectionViewCell {
         containerView.layer.borderColor = UIColor.white.cgColor
         
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            self.containerView.backgroundColor = isSelected ? .ombDarkGrey : .ombLightGrey
+        }
+    }
 
 }
 
