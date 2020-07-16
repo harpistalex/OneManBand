@@ -43,34 +43,45 @@ class VenueDetailsViewController: UIViewController {
     }
     
     @IBAction func toGoogleMaps(_ sender: Any) {
+    
+        //Using coordinates:
+//        var latitude = String()
+//        var longitude = String()
+//
+//        let geoCoder = CLGeocoder()
+//        geoCoder.geocodeAddressString(addressString) { (placemarks, error) in
+//            guard
+//                let placemarks = placemarks,
+//                let location = placemarks.first?.location
+//            else {
+//                // handle no location found
+//                print("No location found")
+//                return
+//            }
+//
+//            // Use your location
+//            print(location)
+//            latitude = "\(location.coordinate.latitude)"
+//            longitude = "\(location.coordinate.longitude)"
+//
+//            print("Lat/Long: \(latitude), \(longitude)")
+//            if let url = URL(string: "https://www.google.com/maps?q=\(latitude),\(longitude)") {
+//                UIApplication.shared.open(url)
+//            }
+//
+//        }
         
-        var latitude = String()
-        var longitude = String()
-        
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(addressString) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-            else {
-                // handle no location found
-                print("No location found")
-                return
-            }
+        //Using venue name and address:
+        var googleAddressString = String()
+        let venueNameFormatted = venue!.name.replacingOccurrences(of: " ", with: "+")
+        let venueAddressFormatted = addressString.replacingOccurrences(of: " ", with: "+")
 
-            // Use your location
-            print(location)
-            latitude = "\(location.coordinate.latitude)"
-            longitude = "\(location.coordinate.longitude)"
-            
-            print("Lat/Long: \(latitude), \(longitude)")
-            if let url = URL(string: "https://www.google.com/maps?q=\(latitude),\(longitude)") {
-                UIApplication.shared.open(url)
-            }
-            
+        googleAddressString = "\(venueNameFormatted)%2C\(venueAddressFormatted.replacingOccurrences(of: "\n", with: "%2C"))"
+        print(googleAddressString)
+        
+        if let url = URL(string: "https://www.google.com/maps?q=\(googleAddressString)") {
+            UIApplication.shared.open(url)
         }
-        
-
         
         
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -17,12 +17,15 @@ class LoginViewController: UIViewController {
     var indicatorTask: DispatchWorkItem?
     
     //TEST
-    let testEmail = "simon@traxsound.co.uk"
-    let testPassword = "abcd"
+    //let testEmail = "simon@traxsound.co.uk"
+    //let testPassword = "abcd"
     //
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
         //view rounded corners
         loginView.layer.cornerRadius = 5
@@ -30,7 +33,6 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginPressed(_ sender: Any) {
-        /*
              
             //TODO: If textfields are empty, it isn't actually nil?? It's just ""?
              
@@ -43,12 +45,12 @@ class LoginViewController: UIViewController {
                 print("please enter password")
                 return
             }
-        */
+
         
         let loadingOverlay = LoadingOverlay(frame: view.bounds)
             self.view.addSubview(loadingOverlay)
 
-            Networking.shared.login(email: testEmail, password: testPassword) { (ApiResponse) in
+            Networking.shared.login(email: email, password: password) { (ApiResponse) in
 
                 switch ApiResponse.success {
                 case true: self.performSegue(withIdentifier: K.loginSegue, sender: self)
@@ -58,6 +60,11 @@ class LoginViewController: UIViewController {
 
             }
     
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 

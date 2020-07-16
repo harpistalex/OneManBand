@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X9V-Li-zYo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X9V-Li-zYo">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -70,13 +70,13 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="192.5" height="34"/>
                                                                 <color key="textColor" red="0.43137254899999999" green="0.39607843139999999" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="wv8-C6-fCl">
                                                                 <rect key="frame" x="0.0" y="44" width="192.5" height="34"/>
                                                                 <color key="textColor" red="0.43137254899999999" green="0.39607843139999999" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -353,7 +353,7 @@
                         <color key="backgroundColor" red="0.18039215689999999" green="0.12941176469999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nK2-3w-aOO" firstAttribute="leading" secondItem="YRt-Le-XPr" secondAttribute="leading" constant="20" id="4qu-6X-lcE"/>
-                            <constraint firstItem="Gkd-fT-dFK" firstAttribute="leading" secondItem="nK2-3w-aOO" secondAttribute="trailing" constant="20" id="6G3-Pr-ok8"/>
+                            <constraint firstItem="Gkd-fT-dFK" firstAttribute="leading" relation="lessThanOrEqual" secondItem="nK2-3w-aOO" secondAttribute="trailing" constant="20" id="6G3-Pr-ok8"/>
                             <constraint firstItem="YRt-Le-XPr" firstAttribute="trailing" secondItem="Veh-nD-uTD" secondAttribute="trailing" constant="20" id="9jp-4O-dpA"/>
                             <constraint firstItem="Veh-nD-uTD" firstAttribute="top" secondItem="YRt-Le-XPr" secondAttribute="top" constant="20" id="Ay1-Ul-hAr"/>
                             <constraint firstItem="YRt-Le-XPr" firstAttribute="trailing" secondItem="57H-uL-qI2" secondAttribute="trailing" id="Cxi-cZ-WWC"/>
@@ -369,7 +369,7 @@
                             <constraint firstItem="UHc-fV-yim" firstAttribute="leading" secondItem="YRt-Le-XPr" secondAttribute="leading" id="dtR-8e-CLl"/>
                             <constraint firstItem="YRt-Le-XPr" firstAttribute="trailing" secondItem="UHc-fV-yim" secondAttribute="trailing" id="hmH-nN-OIY"/>
                             <constraint firstItem="Gkd-fT-dFK" firstAttribute="centerX" secondItem="Lb3-C8-L83" secondAttribute="centerX" id="hwN-ez-IKw"/>
-                            <constraint firstItem="Veh-nD-uTD" firstAttribute="leading" secondItem="Gkd-fT-dFK" secondAttribute="trailing" constant="20" id="txs-PE-elW"/>
+                            <constraint firstItem="Veh-nD-uTD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Gkd-fT-dFK" secondAttribute="trailing" constant="20" id="txs-PE-elW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YRt-Le-XPr"/>
                     </view>
@@ -434,18 +434,6 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="confirmedPressed" destination="7b0-rw-nJM" eventType="touchUpInside" id="iZ6-CO-TFi"/>
@@ -463,18 +451,6 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdc-7k-Av7" customClass="CustomButton" customModule="OneManBand" customModuleProvider="target">
@@ -488,18 +464,6 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                                        <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -726,7 +690,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nhf-bb-wmg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="nhf-bb-wmg">
                                 <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nhf-bb-wmg" id="1nj-1i-vp4">
@@ -910,6 +874,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SH2-Wg-az6" customClass="CustomButton" customModule="OneManBand" customModuleProvider="target">
                                 <rect key="frame" x="20" y="173" width="111" height="28"/>
                                 <color key="backgroundColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Dgr-bF-UiT"/>
+                                </constraints>
                                 <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                 <state key="normal" title="Google Maps">
                                     <color key="titleColor" red="0.18039215689999999" green="0.12941176469999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -930,11 +897,12 @@
                             <constraint firstItem="NrB-IU-RsP" firstAttribute="leading" secondItem="vFz-jU-Jg1" secondAttribute="leading" constant="20" id="557-y4-J8x"/>
                             <constraint firstItem="Ylh-eS-b5K" firstAttribute="top" secondItem="SH2-Wg-az6" secondAttribute="bottom" constant="24" id="Avc-F1-D3K"/>
                             <constraint firstItem="vFz-jU-Jg1" firstAttribute="trailing" secondItem="Ylh-eS-b5K" secondAttribute="trailing" constant="20" id="C5W-em-THv"/>
+                            <constraint firstItem="vFz-jU-Jg1" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SH2-Wg-az6" secondAttribute="trailing" constant="189" id="Irl-Qn-6VQ"/>
                             <constraint firstItem="hTW-KP-FUb" firstAttribute="leading" secondItem="NrB-IU-RsP" secondAttribute="leading" id="Q29-YH-rUC"/>
                             <constraint firstItem="vFz-jU-Jg1" firstAttribute="bottom" secondItem="Ylh-eS-b5K" secondAttribute="bottom" constant="20" id="Uxb-ct-VEx"/>
                             <constraint firstItem="vFz-jU-Jg1" firstAttribute="trailing" secondItem="hTW-KP-FUb" secondAttribute="trailing" constant="20" id="bzg-N3-gGG"/>
                             <constraint firstItem="hTW-KP-FUb" firstAttribute="top" secondItem="NrB-IU-RsP" secondAttribute="bottom" constant="24" id="ciQ-a2-9ea"/>
-                            <constraint firstItem="SH2-Wg-az6" firstAttribute="leading" secondItem="NrB-IU-RsP" secondAttribute="leading" id="dFY-zf-Azy"/>
+                            <constraint firstItem="SH2-Wg-az6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NrB-IU-RsP" secondAttribute="leading" id="dFY-zf-Azy"/>
                             <constraint firstItem="NrB-IU-RsP" firstAttribute="top" secondItem="vFz-jU-Jg1" secondAttribute="top" constant="20" id="dbC-Tx-AOZ"/>
                             <constraint firstItem="SH2-Wg-az6" firstAttribute="top" secondItem="hTW-KP-FUb" secondAttribute="bottom" constant="24" id="pSp-67-h8H"/>
                         </constraints>
