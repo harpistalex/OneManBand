@@ -43,33 +43,6 @@ class VenueDetailsViewController: UIViewController {
     }
     
     @IBAction func toGoogleMaps(_ sender: Any) {
-    
-        //Using coordinates:
-//        var latitude = String()
-//        var longitude = String()
-//
-//        let geoCoder = CLGeocoder()
-//        geoCoder.geocodeAddressString(addressString) { (placemarks, error) in
-//            guard
-//                let placemarks = placemarks,
-//                let location = placemarks.first?.location
-//            else {
-//                // handle no location found
-//                print("No location found")
-//                return
-//            }
-//
-//            // Use your location
-//            print(location)
-//            latitude = "\(location.coordinate.latitude)"
-//            longitude = "\(location.coordinate.longitude)"
-//
-//            print("Lat/Long: \(latitude), \(longitude)")
-//            if let url = URL(string: "https://www.google.com/maps?q=\(latitude),\(longitude)") {
-//                UIApplication.shared.open(url)
-//            }
-//
-//        }
         
         //Using venue name and address:
         var googleAddressString = String()

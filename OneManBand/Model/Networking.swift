@@ -30,8 +30,6 @@ class Networking {
         let loginURL: String = "\(ombURL)/auth/local/login"
         let login = LoginData(email: email, password: password)
 
-        //TODO: Request is still success even if email and pw are empty strings... BECAUSE LOG IN IS USING HARD CODED LOGIN DETAILS?? Or maybe because you're already logged in?
-
         AF.request(loginURL, method: .post, parameters: login, encoder: JSONParameterEncoder.default).validate().responseJSON { response in
                 switch response.result {
                 case .success(let value):
@@ -78,8 +76,6 @@ class Networking {
                     let json = JSON(result)
                     completionHandler(ApiResponse(success: true, data: json as JSON))
 
-                    
-                    //self.tableView.reloadData()
 
                 } else {
                     print("no contacts found")

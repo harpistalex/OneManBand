@@ -215,7 +215,16 @@ class EditEventTableViewController: UITableViewController {
     
     @IBAction func savePressed(_ sender: Any) {
         
-        //self.activityIndicator.startAnimating()
+        //start spinner if call takes longer than 0.5 seconds
+        
+        let loadingOverlay = LoadingOverlay(frame: view.bounds)
+        loadingOverlay.isHidden = true
+        view.addSubview(loadingOverlay)
+        
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { timer in
+            loadingOverlay.isHidden = false
+            print("loadingOverlay showing")
+        }
         
        print("eventDetails: \(eventDetails)")
         let gigParameters = EditGigData(service: (eventDetails[0].1 as! String),
@@ -233,14 +242,16 @@ class EditEventTableViewController: UITableViewController {
                 Networking.shared.editGig(bookingID: self.bookingID, gigID: self.gigID, parameters: gigParameters) { (ApiResponse) in
                 switch ApiResponse.success {
                 case true: self.performSegue(withIdentifier: K.editEventUnwind, sender: self)
-                default: print("Failed to save data") //TODO: Toast?
+                default: print("Failed to save data") //Toast?
                 }
 
             }
-            default: print("Failed to save data") //TODO: Toast?
+            default: print("Failed to save data") //Toast?
             }
 
-            //self.activityIndicator.stopAnimating()
+            //stop spinner
+            loadingOverlay.removeFromSuperview()
+            timer.invalidate()
                     
                 
         }
@@ -304,8 +315,6 @@ extension EditEventTableViewController: UITextViewDelegate {
     
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        //textView.backgroundColor = .ombLightGrey
-        //textView.scrollRangeToVisible(textView.selectedRange)
         
         //To calculate cell size
         remainingSpace = (view.frame.maxY - textView.frame.minY) / 2
@@ -317,21 +326,18 @@ extension EditEventTableViewController: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        //textView.backgroundColor = .ombLightGrey
+
         textView.isUserInteractionEnabled = false
         textView.resignFirstResponder()
-        //print("didEndEditing: \(textView.text ?? "")")
         
         //Save string value to eventDetails array.
         if eventDetailsReference?.row == 0 || eventDetailsReference?.row == 4 {
             eventDetails[eventDetailsReference!.row].1 = textView.text ?? ""
-            //print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
         }
         
         //price needs to be float.
         if eventDetailsReference?.row == 3 {
             eventDetails[eventDetailsReference!.row].1 = Float(textView.text) ?? 0
-            //print("Details to save: \(eventDetails[eventDetailsReference!.row].1)")
         }
         
         //To calculate cell size
@@ -343,7 +349,6 @@ extension EditEventTableViewController: UITextViewDelegate {
     
     //Dissmisses the keyboard when return is pressed:
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        //TODO: Done button instead of pressing return.
         if text == "\n" {
             textView.resignFirstResponder()
             return false

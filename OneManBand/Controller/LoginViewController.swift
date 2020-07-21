@@ -16,11 +16,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var indicatorTask: DispatchWorkItem?
     
-    //TEST
-    //let testEmail = "simon@traxsound.co.uk"
-    //let testPassword = "abcd"
-    //
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +28,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginPressed(_ sender: Any) {
-             
-            //TODO: If textfields are empty, it isn't actually nil?? It's just ""?
              
             guard let email = emailTextField.text else {
                 print("please enter email")
@@ -56,7 +49,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 case true: self.performSegue(withIdentifier: K.loginSegue, sender: self)
                 default: print("Failed to log in"); loadingOverlay.removeFromSuperview() //TOAST?
                 }
-                loadingOverlay.removeFromSuperview() //TODO: this might not be necessary.
+                loadingOverlay.removeFromSuperview()
 
             }
     

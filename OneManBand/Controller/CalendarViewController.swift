@@ -116,8 +116,6 @@ class CalendarViewController: UIViewController {
             dateArray = customCalendar.createDateArray(firstMonday: firstMonday, lastSunday: lastSunday)
             bookingBooleans = Array<Bool>(repeating: false, count: dateArray.count)
             
-            //print("dateArray count and bookingsBooleans count: \(dateArray.count) \(bookingBooleans.count)")
-            
         }
     
     //MARK: - Get Data
@@ -174,11 +172,9 @@ class CalendarViewController: UIViewController {
                     print(bookings[x].gig)
                     
                     let dateOfGig = bookings[x].gig.startTime
-                    //print("dateOfGig: \(dateOfGig)")
                     
                     for i in 0..<dateArray.count {
                         if compareDates(dateOfBooking: dateOfGig, dateInCalendar: dateArray[i]) {
-                            //print("Date in calendar: \(dateArray[i])")
                             bookingBooleans[i] = true
                         }
                         
