@@ -110,10 +110,9 @@ class CalendarViewController: UIViewController {
             
             let currentMonth = customCalendar.currentMonthStart()
             let firstMonday = customCalendar.findFirstMonday(startDay: currentMonth)
-            let lastSunday = customCalendar.findLastSunday(currentMonth: currentMonth)
-            print(lastSunday)
+            //let lastSunday = customCalendar.findLastSunday(currentMonth: currentMonth)
 
-            dateArray = customCalendar.createDateArray(firstMonday: firstMonday, lastSunday: lastSunday)
+            dateArray = customCalendar.createDateArray(firstMonday: firstMonday)
             bookingBooleans = Array<Bool>(repeating: false, count: dateArray.count)
             
         }
@@ -124,7 +123,7 @@ class CalendarViewController: UIViewController {
             
             let currentMonth = customCalendar.currentMonthStart()
             let firstMonday = customCalendar.findFirstMonday(startDay: currentMonth)
-            let lastSunday = customCalendar.findLastSunday(currentMonth: currentMonth)
+            let lastSunday = dateArray.last!
             
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let startDate = dateFormatter.string(from: firstMonday)

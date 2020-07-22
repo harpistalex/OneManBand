@@ -38,60 +38,24 @@ class CustomCalendar {
         var comp1 = DateComponents()
 
         comp1.day = -(daysBeforeFirst)
-        comp1.hour = 1 //TODO: Daylight savings?!
+        comp1.hour = 1
         
         let firstMonday = Calendar.current.date(byAdding: comp1, to: startDay)
         
-        return firstMonday! //UNWRAP
+        return firstMonday!
         
     }
+
+    func createDateArray(firstMonday: Date) -> Array<Date>{
+        
     
-    func findLastSunday(currentMonth: Date) -> Date {
-        
-        //When using this, input startOfMonth as current month.
-
-        var lastSunday = Date()
-        
-        var comps = DateComponents()
-        comps.month = 1 //Goes to the first day of the next month.
-        comps.day = -1 //Goes to the day before (ie the final day of the previous month).
-        let endOfMonth = Calendar.current.date(byAdding: comps, to: currentMonth)! //Unwrap...
-        
-        switch endOfMonth.getWeekDayNum(){
-        case 1: lastSunday = endOfMonth
-        case 2: lastSunday = Calendar.current.date(byAdding: .day, value: 6, to: endOfMonth)!
-        case 3: lastSunday = Calendar.current.date(byAdding: .day, value: 5, to: endOfMonth)!
-        case 4: lastSunday = Calendar.current.date(byAdding: .day, value: 4, to: endOfMonth)!
-        case 5: lastSunday = Calendar.current.date(byAdding: .day, value: 3, to: endOfMonth)!
-        case 6: lastSunday = Calendar.current.date(byAdding: .day, value: 2, to: endOfMonth)!
-        default: lastSunday = Calendar.current.date(byAdding: .day, value: 1, to: endOfMonth)!
-        }
-        
-        return lastSunday
-        
-    }
-
-    func createDateArray(firstMonday: Date, lastSunday: Date) -> Array<Date>{
-        
         var date = firstMonday
         var listOfDatesToShow = Array<Date>()
         
-        while date <= lastSunday {
+        for _ in 0...41 {
+            
             listOfDatesToShow.append(date)
-            date = Calendar.current.date(byAdding: .day, value: 1, to: date)! //Unwrap...
-        }
-        
-        listOfDatesToShow.append(lastSunday)
-        
-        //Make sure there are always 6 columns in the calendarCollectionView:
-        if listOfDatesToShow.count < 42 {
-            
-            var date2 = Calendar.current.date(byAdding: .day, value: 1, to: lastSunday)!
-            
-            for _ in 0...6 {
-                listOfDatesToShow.append(date2)
-                date2 = Calendar.current.date(byAdding: .day, value: 1, to: date2)! //Unwrap...
-            }
+            date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
             
         }
         
